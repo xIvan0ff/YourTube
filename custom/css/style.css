@@ -1,0 +1,131 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #6d6d6d;
+    background-color: #1F1F1F;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+.footer {
+    color: var(--light);
+}
+
+.bg-dark {
+    background-color: #282828 !important;
+}
+
+.fa, .fab, .fad, .fal, .far, .fas {
+    line-height: inherit;
+}
+
+.btn-main {
+    color: #FFF !important;
+    background-color: rgba(40, 40, 40, 0.8);
+    border-color: rgba(40, 40, 40, 0.8);
+    transition: all 0.1s;
+}
+
+.btn-main:hover {
+    color: #FFF !important;
+    background-color: rgba(58, 58, 58, 1);
+    border-color: rgba(58, 58, 58, 1);
+    transition: all 0.2s;
+}
+
+#navbar {
+    max-height: 10vh;
+}
+
+.logo {
+    color: red;
+}
+
+.navbar-brand {
+    vertical-align: middle;
+}
+
+.btn-back {
+    color: #FFF !important;
+    background-color: rgba(50, 50, 50, 1);
+    border-color: rgba(50, 50, 50, 1);
+    transition: all 0.1s;
+}
+
+.btn-back:hover {
+    color: #FFF !important;
+    background-color: rgba(58, 58, 58, 1);
+    border-color: rgba(58, 58, 58, 1);
+    transition: all 0.1s;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.avatar-img {
+    width: auto;
+    height: auto;
+}
+
+.avatar-btn {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+}
+
+.avatar-btn:active, .avatar-btn:focus {
+    border-color: var(--primary) !important;
+}
+
+#nav-icon {
+    transition: all 250ms ease-in-out;
+  }
+  
+
+#sidebarCollapse.active > #nav-icon {
+    transform: rotate(90deg);
+}
+
+.sign-btn {
+    color: var(--primary);
+    border-radius: unset;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.sign-btn:active, .sign-btn:focus, .sign-btn:hover {
+    background-color: rgba(58, 58, 58, 1);
+    color: var(--primary) !important;
+}
+
+.modal-header, .modal-footer {
+    border-color: rgba(58, 58, 58, 1);
+}
