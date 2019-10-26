@@ -5,8 +5,7 @@
                                 <div class="form-group">
                                     <label for="mysqlhost">MySQL Host</label>
                                     <input type="text" required class="form-control bg-dark border-dark" name="mysqlhost" id="mysqlhost" placeholder="The host your MySQL server is on." value='{{$config.mysqlhost}}'>
-                                    <!-- <small id="mysqlhostHelp" class="form-text text-muted">The host your MySQL server is on.</small> -->
-                                
+        
                                     <label for="mysqlport">MySQL Port</label>
                                     <input type="number" class="form-control bg-dark border-dark" name="mysqlport" id="mysqlport" pattern="[0-9]" placeholder="The port your MySQL server is on. If not specifed will use the default one (3306)." value='{{$config.mysqlport}}'>
 
