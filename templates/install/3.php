@@ -7,7 +7,7 @@
                                     <label for="adminpass">Administrator Password:</label>
                                     <input type="password" required class="form-control bg-dark border-dark" name="adminpass" id="adminpass" placeholder="Enter an administrator password." value="{{$config.adminpass}}">
                                 </div>
-                                <button type="submit" href="" id="second-step" class="btn btn-back">Next <i class="fas fa-arrow-circle-right"></i></button>
+                                <button type="submit" id="second-step" class="btn btn-back">Next <i class="fas fa-arrow-circle-right"></i></button>
                             </form>
 
                         </div>

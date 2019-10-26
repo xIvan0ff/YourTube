@@ -26,7 +26,7 @@
                                    <button type="button" class="btn btn-back check">Check connection</button>
                                 </div>
                                 <div class="my-3">
-                                    <button type="submit" href="" id="forth-step" class="btn btn-back" disabled hidden>Next <i class="fas fa-arrow-circle-right"></i></button>
+                                    <button type="submit" id="forth-step" class="btn btn-back" disabled hidden>Next <i class="fas fa-arrow-circle-right"></i></button>
                                 </div>
                             </form>
                             <div>
