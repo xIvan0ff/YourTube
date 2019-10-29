@@ -14,7 +14,7 @@
                         <div>
                             {if isset($smarty.session.account)}
                             <button type="button" class="avatar-btn rounded-circle border border-dark">
-                                <img src="https://via.placeholder.com/1200" alt="" class="img-fluid rounded-circle avatar-img" />
+                                <img src="https://via.placeholder.com/100" alt="" class="img-fluid rounded-circle avatar-img" />
                             </button>
                             {else}
                             <button type="button" class="btn border border-primary sign-btn" data-toggle="modal" data-target="#loginModal">

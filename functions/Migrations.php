@@ -21,11 +21,15 @@
             // $migrationContent = fopen($migration, 'r');
             foreach($queries as $query)
             {
-                $config['mysqlconn']->query($query);
+                $execute = $config['mysqlconn']->query($query);
+                if ($execute === false) {
+                    throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+                }
+
             }
 
             $config['mysqlconn']->query($migrationQuery);
-            $end = round(microtime(true) - $start, 2);
+            $end = round(microtime(true) - $start, 3);
             echo("Execution completed (execution time $end ms)<br/><br/>");
             return true;
         }
@@ -53,7 +57,6 @@
             $queries[1] = "ALTER TABLE `migrations` ADD PRIMARY KEY (`id`);";
             $queries[2] = "ALTER TABLE `migrations` MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;";
             $queries[3] = "ALTER TABLE `migrations` ADD UNIQUE(`migration`);";
-            // $queries[4] = "ALTER TABLE `migrations` CHANGE `migration` `migration` BIGINT(20) NOT NULL; ";
 
             foreach($queries as $query)
             {

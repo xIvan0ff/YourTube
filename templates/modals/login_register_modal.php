@@ -10,13 +10,15 @@
       <div class="modal-body text-center">
         <form class="form" id="login-form" method='post'>
           <div class="form-group">
-              <label for="login_user">Username or e-mail:</label>
-              <input type="text" required class="form-control bg-dark border-dark" name="login_user" id="login_user" placeholder="Your username or e-mail.">
-              <label for="login_password">Password:</label>
-              <input type="password" required class="form-control bg-dark border-dark" name="login_password" id="login_password" placeholder="Your password.">
+            <input type="hidden" id="login" name="login" value="1">
+            <label for="login_user">Username or e-mail:</label>
+            <input type="text" required class="form-control bg-dark border-dark" name="login_user" id="login_user" placeholder="Your username or e-mail.">
+            <label for="login_password">Password:</label>
+            <input type="password" required class="form-control bg-dark border-dark" name="login_password" id="login_password" placeholder="Your password.">
           </div>
           <button type="submit" class="btn btn-back">Sign in</button>
         </form>
+        <p id="result"></p>
       </div>
       <div class="modal-footer">
         <span>Don't have an account? <a href="#" class="text-primary" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Sign Up!</a></span>

@@ -13,13 +13,13 @@
                     </div>
                 </div>
             </div>
-            <div class="container d-none d-md-block">
+            <div class="container-fluid d-none d-md-block py-1">
                 <div class="row">
                     <div class="col text-left">
-                        asd
+                    &copy; Copyright {'Y'|date} <a href="http://www.github.com/xIvan0ff/YourTube" class="text-info">YourTube</a>. All rights reserved.	
                     </div>
                     <div class="col text-right">
-                        asd
+                       v{{$version}}
                     </div>
                 </div>
             </div>
