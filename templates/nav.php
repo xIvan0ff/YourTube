@@ -12,7 +12,7 @@
                         </div>
                         {if $nav_center == false}
                         <div>
-                            {if isset($smarty.session.account)}
+                            {if isset($account)}
                             <button type="button" class="avatar-btn rounded-circle border border-dark">
                                 <img src="https://via.placeholder.com/100" alt="" class="img-fluid rounded-circle avatar-img" />
                             </button>

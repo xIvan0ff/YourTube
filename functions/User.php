@@ -1,6 +1,6 @@
 <?php
-    include('../config/config.php');
-    include('Validator.php');
+    // include('../config/config.php');
+    // include('Validator.php');
 
     class User {
         public $id;
@@ -12,7 +12,13 @@
 
         function __construct($username, $password, $email = NULL)
         {
-            $this->username = $username;
+            if(filter_var($username, FILTER_VALIDATE_EMAIL))
+            {
+                $this->email = $username;
+            } else {
+                $this->username = $username;
+            }
+
             $this->password = hash('sha256', $password);
             
             if($email)
@@ -21,14 +27,16 @@
             $this->fillData();
         }
 
-        function validate($username, $password)
+        function validate()
         {
-            $data = ['username' => $username, 'password' => $password];
-            $rules = [
-                // 'id'       => ['required', 'numeric'],
-                'username' => ['required', 'minLen' => 4, 'maxLen' => 20],
-                'password' => ['required', 'minLen' => 8]
-            ];
+            $data = ['password' => $this->password];
+            $rules = ['password' => ['required', 'minLen' => 8]];
+
+            if($this->username)
+            {
+                $rules['username'] = ['required', 'minLen' => 4, 'maxLen' => 20];
+                $data['username'] = $this->username;
+            }
 
             if($this->email)
             {
@@ -44,7 +52,7 @@
 
         function isValid()
         {
-            $errors = $this->validate($this->username, $this->password);
+            $errors = $this->validate();
             if(empty($errors))
                 return true;
 
@@ -68,11 +76,18 @@
             global $config;
 
             $this->ip = $this->getIP();
-            
+
             if(!$this->isValid() || !$this->exists())
                 return false;
             
-            $sql = "SELECT * FROM `accounts` WHERE username = '$this->username';";
+            $seachByUsername = true;
+            if($this->email)
+                $seachByUsername = false;
+
+            $searchColumn = $seachByUsername ? 'username' : 'email';
+            $searchValue = $seachByUsername ? $this->username : $this->email;
+
+            $sql = "SELECT * FROM `accounts` WHERE $searchColumn = '$searchValue';";
 
             $query = $config['mysqlconn']->query($sql);
 
@@ -84,6 +99,7 @@
             if($row)
             {
                 $this->id = $row->id;
+                $this->username = $row->username;
                 $this->email = $row->email;
                 $this->regip = $row->regip;
                 return true;

@@ -1,6 +1,6 @@
 <?php
-    session_start();
     require_once('config/config.php');
+    session_start();
     $template_dir = $smarty->getTemplateDir();
     $template_dir = $template_dir[0];
     $page = 'index.php';
@@ -25,6 +25,9 @@
   }
 
   $smarty->assign("display_sidebar", $page != "index.php");
+
+  if(isset($_SESSION['account']))
+    $smarty->assign('account', unserialize($_SESSION['account']));
 
   $smarty->display('head.php');
   $smarty->display('nav.php');

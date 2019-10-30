@@ -3,8 +3,8 @@
         header('Location: ../');
     
 
+    require_once('../config/config.php');
     session_start();
-    require_once('User.php');
 
     $action = 0;
 
@@ -26,7 +26,7 @@
                 die('0');
             }
 
-            $_SESSION['account'] = $user;
+            $_SESSION['account'] = serialize($user);
             die('1');
 
             break;
@@ -35,6 +35,6 @@
         default:
             break;
     }
-    
+        $user = new User($_POST['register_user'], $_POST['register_password'], $_POST['register_email']);
     die('1');
 ?>

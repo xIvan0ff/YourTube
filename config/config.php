@@ -1,8 +1,13 @@
 <?php
     $smartyLib = 'libs/Smarty.class.php';
+    $globalInc = 'functions/GlobalIncludes.php';
     if(!file_exists($smartyLib))
         $smartyLib = "../$smartyLib";
     require $smartyLib;    
+    if(!file_exists($globalInc))
+        $globalInc = "../$globalInc";
+    require $globalInc;
+
     $smarty = new Smarty;
 
     // GENERAL SETTINGS
