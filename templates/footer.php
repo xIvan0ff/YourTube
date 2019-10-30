@@ -16,10 +16,10 @@
             <div class="container-fluid d-none d-md-block py-1">
                 <div class="row">
                     <div class="col text-left">
-                    &copy; Copyright {'Y'|date} <a href="http://www.github.com/xIvan0ff/YourTube" class="text-info">YourTube</a>. All rights reserved.	
+                    &copy; Copyright 2019-{'Y'|date} <a class="text-danger">{{$config.name}}</a>. All rights reserved.	
                     </div>
                     <div class="col text-right">
-                       v{{$version}}
+                    <a href="http://www.github.com/xIvan0ff/YourTube" class="text-danger">YourTube</a> v{{$config.version}} by <a href="http://www.github.com/xIvan0ff" class="text-danger">xIvan0ff</a>.
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@
                                 <i id="nav-icon" class="fas fa-bars"></i>
                             </a>
                             <a href="{{$maindir}}" class="navbar-brand">
-                                <i class="fab fa-youtube-square logo"></i>
+                                <i class="fab fa-youtube-square text-danger"></i>
                                 <span class="font-weight-bold">{{$config.name}}</span>
                                 <!-- <img class="img-fluid navbar-img" src="{{$imgdir}}/logo.png"> -->
                             </a>

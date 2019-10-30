@@ -23,7 +23,7 @@
     
     //             -- Don't touch under this line --
     $config['installed'] = '1';
-    $config['version'] = '0.2.3';
+    $config['version'] = '0.2.5';
     $config['nav_center'] = false; // If the navigation should be centered
 
     //PATHS
@@ -45,7 +45,6 @@
     $smarty->assign('imgdir', $config['imgdir']);
     $smarty->assign('customdir', $config['customdir']);
     $smarty->assign('nav_center', $config['nav_center']);
-    $smarty->assign('version', $config['version']);
     $smarty->assign('config', $config);
     
     // if($config['installed'] == '1')
