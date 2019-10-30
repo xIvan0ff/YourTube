@@ -7,28 +7,4 @@
                             </form>
                             <div>
                         </div>
-                        <script>
-                            var url = maindir + "/functions/run_migrations.php";
-                            $("#database-form").submit(function(e) {
-
-                                e.preventDefault();
-
-                                var form = $(this);
-                                var nextUrl = form.attr('action');
-
-                                $.ajax({
-                                    type: "POST",
-                                    url: url,
-                                    data: "post:1",
-                                    // data: form.serialize(),
-                                    success: function(data)
-                                    {
-                                        $('#result').html(data);
-                                    }
-                                });
-
-                                setTimeout(() => {
-                                    window.location.href = nextUrl;
-                                }, 2500);
-                            });
-                        </script>
+                        <script src="{{$customdir}}/js/migrations_ajax.js"></script>

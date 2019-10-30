@@ -12,7 +12,9 @@
         $action = 0;
     if(isset($_POST['register']))
         $action = 1;
-
+    if(isset($_POST['logout']))
+        $action = 2;
+        
     switch($action)
     {
         case 0:
@@ -31,10 +33,13 @@
 
             break;
         case 1:
-
+           $user = new User($_POST['register_user'], $_POST['register_password'], $_POST['register_email']);
+            break;
+        case 2:
+            unset($_SESSION['account']);
+            break;
         default:
             break;
     }
-        $user = new User($_POST['register_user'], $_POST['register_password'], $_POST['register_email']);
     die('1');
 ?>

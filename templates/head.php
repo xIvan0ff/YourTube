@@ -21,6 +21,8 @@
             var imgdir = '{$imgdir}';
         </script>
 
+        <script src="{{$customdir}}/js/logout_ajax.js"></script>
+
         <title>{if isset($video)}{{$video}} - {/if}{{$config.name}}{if isset($page) && !isset($video)} - {{ucfirst(strtolower($page))}}{/if}</title>
     </head>
     <body>

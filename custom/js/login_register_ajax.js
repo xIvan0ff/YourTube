@@ -1,4 +1,3 @@
-
 var url = maindir + "/functions/user_functions.php";
 
 var p = $('#result');
@@ -40,7 +39,7 @@ $("#login-form").submit(function(e) {
                 p.addClass(color);
                 p.html(text);
                 if(reload)
-                    setTimeout(()=>{window.location.reload()}, 150);
+                    setTimeout(()=>{window.location.reload()}, 50);
             }
         });
 });
