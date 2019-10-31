@@ -4,7 +4,7 @@
                             <a role="button" id="sidebarCollapse" class="btn btn-main rounded-circle d-none mr-3{if $nav_center } d-md-none{else} d-md-inline-block{/if}">
                                 <i id="nav-icon" class="fas fa-bars"></i>
                             </a>
-                            <a href="{{$maindir}}" class="navbar-brand">
+                            <a href="{{$maindir}}" class="navbar-brand text-light">
                                 <i class="fab fa-youtube-square text-danger"></i>
                                 <span class="font-weight-bold">{{$config.name}}</span>
                                 <!-- <img class="img-fluid navbar-img" src="{{$imgdir}}/logo.png"> -->

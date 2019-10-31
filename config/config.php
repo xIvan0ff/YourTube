@@ -23,7 +23,7 @@
     
     //             -- Don't touch under this line --
     $config['installed'] = '1';
-    $config['version'] = '0.2.5';
+    $config['version'] = '0.2.8';
     $config['nav_center'] = false; // If the navigation should be centered
 
     //PATHS
@@ -40,6 +40,8 @@
     $config['maindir'] = $protocol.$_SERVER['HTTP_HOST'].$config['maindir'];
     $config['customdir'] = $config['maindir'].$config['customdir'];
     $config['imgdir'] = $config['customdir'].$config['imgdir'];
+
+    $config['default_avatars'] = getDefaultAvatars();
 
     $smarty->assign('maindir', $config['maindir']);
     $smarty->assign('imgdir', $config['imgdir']);

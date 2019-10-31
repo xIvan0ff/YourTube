@@ -9,6 +9,7 @@
         public $password;
         public $ip;
         public $regip;
+        public $rank = 10;
 
         function __construct($username, $password, $email = NULL)
         {
@@ -59,6 +60,11 @@
             $this->errors = $errors;
 
             return false;
+        }
+
+        function isAdmin()
+        {
+            return $this->rank > 2 ? true : false;
         }
 
         function getErrors()
