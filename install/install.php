@@ -11,7 +11,7 @@
 
     if(file_exists('../config/config.bac') && !file_exists('../config/config.php'))
     {
-        rename('../config/config.bac', 'config.php');
+        rename('../config/config.bac', '../config/config.php');
     }
 
     require_once('../config/config.php');
