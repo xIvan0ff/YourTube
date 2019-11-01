@@ -1,7 +1,6 @@
             </div>
         </div>
-        {if isset($account)}
-        {else}
+        {if !isset($account) && $config.installed}
             {include file="modals/login_register_modal.php"}
             <script src="{{$customdir}}/js/login_register_ajax.js"></script>
         {/if}
