@@ -1,15 +1,14 @@
 <?php
     // include('../config/config.php');
     // include('Validator.php');
-
     class User {
         public $id;
         public $username;
         public $email;
         public $password;
+        public $rank;
         public $ip;
         public $regip;
-        public $rank = 10;
 
         function __construct($username, $password, $email = NULL)
         {
@@ -77,6 +76,35 @@
             return $errors;
         }
 
+        function updateData($searchColumn = 'id', $searchValue = '')
+        {
+            global $config;
+
+            if(empty($searchValue))
+                $searchValue = $this->id;
+
+            $sql = "SELECT * FROM `accounts` WHERE $searchColumn = '$searchValue';";
+
+            $query = $config['mysqlconn']->query($sql);
+
+            if ($query === false) {
+                throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+            }
+
+            $row = $query->fetch_object();
+            if($row)
+            {
+                $this->id = $row->id;
+                $this->username = $row->username;
+                $this->email = $row->email;
+                $this->rank = $row->rank;
+                $this->regip = $row->regip;
+                return true;
+            }
+
+            return false;
+        }
+
         function fillData()
         {
             global $config;
@@ -93,25 +121,7 @@
             $searchColumn = $seachByUsername ? 'username' : 'email';
             $searchValue = $seachByUsername ? $this->username : $this->email;
 
-            $sql = "SELECT * FROM `accounts` WHERE $searchColumn = '$searchValue';";
-
-            $query = $config['mysqlconn']->query($sql);
-
-            if ($query === false) {
-                throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
-            }
-
-            $row = $query->fetch_object();
-            if($row)
-            {
-                $this->id = $row->id;
-                $this->username = $row->username;
-                $this->email = $row->email;
-                $this->regip = $row->regip;
-                return true;
-            }
-
-            return false;
+            return $this->updateData($searchColumn, $searchValue);
         }
 
         function getIP()
@@ -123,6 +133,22 @@
             getenv('HTTP_FORWARDED')?:
             getenv('REMOTE_ADDR');
             return $ip;
+        }
+
+        function getRank($text = false)
+        {
+            static $ranks = [
+            0 => 'Member', 
+            1 => 'VIP',
+            2 => 'Moderator',
+            3 => 'Administrator'
+            ];
+            return $text ? $ranks[$this->rank] : $this->rank;
+        }
+
+        function logout()
+        {
+            unset($_SESSION['account']);
         }
 
         function addLog($logType)
@@ -140,11 +166,15 @@
                     break;
                 case 3:
                     $logText = "(IP: $this->ip) tried to login with invalid username ($this->username).";
+                    break;
+                case 4:
+                    $logText = "Account ($this->username) logged out (IP: $this->ip).";
+                    break;
                 default:
                     break;
             }
 
-            $query = "INSERT INTO site_logs VALUES (NULL, '$logType', '$logText');";
+            $query = "INSERT INTO `site_logs` VALUES (NULL, '$logType', '$logText');";
             $sql = $config['mysqlconn']->query($query);
 
             if ($sql === false) {
@@ -174,6 +204,7 @@
             if($row)
             {
                 $this->fillData();
+                $_SESSION['account'] = serialize($this);
                 $this->addLog(2);
                 return true;
             }

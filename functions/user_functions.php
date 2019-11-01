@@ -4,7 +4,6 @@
     
 
     require_once('../config/config.php');
-    session_start();
 
     $action = 0;
 
@@ -14,7 +13,7 @@
         $action = 1;
     if(isset($_POST['logout']))
         $action = 2;
-        
+
     switch($action)
     {
         case 0:
@@ -27,16 +26,15 @@
             {
                 die('0');
             }
-
-            $_SESSION['account'] = serialize($user);
             die('1');
 
             break;
         case 1:
-           $user = new User($_POST['register_user'], $_POST['register_password'], $_POST['register_email']);
+            $user = new User($_POST['register_user'], $_POST['register_password'], $_POST['register_email']);
             break;
         case 2:
-            unset($_SESSION['account']);
+            $user = unserialize($_SESSION['account']);
+            $user->logout();
             break;
         default:
             break;

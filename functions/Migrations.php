@@ -74,6 +74,9 @@
             global $config;
             $this->checkMigrationDB();
             $migrations = glob('../sql/*.php');
+            usort($migrations, function($a, $b) {
+                return filemtime($a) > filemtime($b);
+            });
             $migrationCount = 0;
             foreach($migrations as $migration)
             {

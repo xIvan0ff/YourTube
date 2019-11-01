@@ -7,8 +7,6 @@
         }
     }
 
-    session_start();
-
     if(file_exists('../config/config.bac') && !file_exists('../config/config.php'))
     {
         rename('../config/config.bac', '../config/config.php');
