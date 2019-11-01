@@ -12,14 +12,14 @@
 
     // GENERAL SETTINGS
 	$config['name'] = 'YourTube';
-	$config['adminpass'] = '123';
+	$config['adminpass'] = '';
 
     // DATABASE SETTINGS
-	$config['mysqlhost'] = 'localhost';
-	$config['mysqlport'] = '3306';
-	$config['mysqluser'] = 'root';
-	$config['mysqlpass'] = 'asd123ASD!';
-	$config['mysqlname'] = 'yourtube';
+	$config['mysqlhost'] = '';
+	$config['mysqlport'] = '';
+	$config['mysqluser'] = '';
+	$config['mysqlpass'] = '';
+	$config['mysqlname'] = '';
     
     //             -- Don't touch under this line --
     $config['installed'] = '1';

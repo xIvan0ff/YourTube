@@ -8,6 +8,8 @@
         <script src="https://kit.fontawesome.com/10d7a16c5b.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
         <!-- CUSTOM -->
         <link href="{{$customdir}}/css/style.css" rel="stylesheet" />
         <link href="{{$customdir}}/css/sidebar.css" rel="stylesheet" />

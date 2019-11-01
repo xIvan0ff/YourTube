@@ -10,16 +10,16 @@
       <div class="modal-body text-center">
         <form class="form" id="avatar-form" method='post'>
           <div class="form-group">
-            <input type="file" class="image-upload" accept="image/*" >
+            <input type="file" id="avatar-upload" accept="image/*" >
           </div>
         </form>
-          <p>Or pick one from ours</p>
-          <div class="border border-dark p-2">
-            <form class="form" id="default-avatar-form" method='post'>
+          <p>Or pick one from ours below</p>
+          <div class="border border-dark pt-2">
+            <form class="form mb-0" id="default-avatar-form" method='post'>
               {foreach $config.default_avatars as $avatar}
-              <label class="avatars-list-avatar">
-                  <input class="avatar-radio" type="radio" name="avatar-name" value="{{$avatar}}" checked>
-                  <img class="img-fluid rounded-circle avatar-img" src="{{$imgdir}}/avatars/default/{{$avatar}}">
+              <label class="avatars-list-avatar rounded-circle">
+                  <input class="avatar-radio" type="radio" name="avatar-name" value="{{$avatar}}">
+                  <img class="img-fluid rounded-circle avatar-img default-avatar" src="{{$imgdir}}/avatars/default/{{$avatar}}">
               </label>
               {/foreach}
             </form>
@@ -34,3 +34,26 @@
     </div>
   </div>
 </div>
+
+<script>
+$(function(){
+  $('#default-avatar-form input[type="radio"]').click(function(){
+    $(".default-avatar").removeClass('border');
+    $(this).next().toggleClass('border border-success', $(this).is(':checked'));
+  });
+});
+</script>
+
+<script>
+  $(function() {
+    $("#save-avatar").click(function(){
+      let avatarUploaded = $("#avatar-upload").val() != '';
+      if(avatarUploaded)
+      {
+        alert("yes");
+      } else {
+        alert("no");
+      }
+    });
+  });
+</script>

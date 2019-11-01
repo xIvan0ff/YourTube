@@ -25,18 +25,23 @@ p {
     line-height: inherit;
 }
 
-.btn-main {
+.btn-main, .btn-footer {
     color: #FFF !important;
     background-color: rgba(40, 40, 40, 0.8);
     border-color: rgba(40, 40, 40, 0.8);
     transition: all 0.1s;
 }
 
-.btn-main:hover {
+.btn-main:hover, .btn-main:active, .btn-main:focus, .btn-footer:hover, .btn-footer:active, .btn-footer:focus {
     color: #FFF !important;
     background-color: rgba(58, 58, 58, 1);
     border-color: rgba(58, 58, 58, 1);
     transition: all 0.2s;
+}
+
+.btn-footer {
+    width: 100%;
+    font-size: 26px;
 }
 
 #navbar {
@@ -142,23 +147,26 @@ p {
     border-color: rgba(58, 58, 58, 1);
 }
 
-
-/* AVATAR RADIO BUTTONS */
-
-/* HIDE RADIO */
-  .avatar-radio[type=radio] { 
+.avatar-radio[type=radio] { 
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* IMAGE STYLES */
-  .avatar-radio[type=radio] + img {
+}
+.avatar-radio[type=radio] + img {
     cursor: pointer;
-  }
-  
-  /* CHECKED STYLES */
-  .avatar-radio[type=radio]:checked + img {
-    outline: 2px solid #f00;
-  }
+}
+
+.default-avatar {
+    border-width: 3px !important;
+}
+
+.avatars-list-avatar {
+    cursor: pointer;
+}
+
+div {
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
