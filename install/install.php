@@ -12,6 +12,7 @@
     if(file_exists('../config/config.bac') && !file_exists('../config/config.php'))
     {
         rename('../config/config.bac', '../config/config.php');
+        chmod("../config/config.php",01777); 
     }
 
     require_once('../config/config.php');
