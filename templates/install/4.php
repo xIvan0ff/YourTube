@@ -19,7 +19,7 @@
                                     <label for="mysqlname">MySQL Database Name</label>
                                     <input type="text" required class="form-control bg-dark border-dark" name="mysqlname" id="mysqlname" placeholder="The MySQL database where {$config.name} will be installed. (It should be already created)" value='{{$config.mysqlname}}'>
                                 </div>
-                                <p id="result"><span class="font-weight-bold">Result:</span> <span id="result-text">Not Tested</span></p>
+                                <p id="mysql-result"><span class="font-weight-bold">Result:</span> <span id="result-text">Not Tested</span></p>
                                 
                                 <div>
                                    <button type="button" class="btn btn-back check">Check connection</button>
@@ -67,8 +67,8 @@
                             }
                             $("#result-text").html(text);
                             color = "text-" + color;
-                            $('#result').removeClass();
-                            $('#result').addClass(color);
+                            $('#mysql-result').removeClass();
+                            $('#mysql-result').addClass(color);
                             $('#forth-step').attr("disabled", disabled);
                             $('#forth-step').attr("hidden", disabled);
                             

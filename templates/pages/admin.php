@@ -8,7 +8,7 @@
                         <a class="nav-link active bg-transparent border-0" href="#general" role="tab" aria-controls="general" aria-selected="true">General Settings</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link bg-transparent border-0" href="#history" role="tab" aria-controls="history" aria-selected="false">History</a>
+                        <a class="nav-link bg-transparent border-0" href="#migrations" role="tab" aria-controls="migrations" aria-selected="false">Migrations</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link bg-transparent border-0" href="#deals" role="tab" aria-controls="deals" aria-selected="false">Deals</a>
@@ -21,16 +21,24 @@
                     
                     <div class="tab-content mt-3">
                         <div class="tab-pane active" id="general" role="tabpanel">
-                        <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                        <a href="#" class="card-link text-danger">Read more</a>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
+                            <a href="#" class="card-link text-danger">Read more</a>
+                        </div>
+                        <div class="tab-pane" id="migrations" role="tabpanel">
+                            <div class="row text-center">
+                                <div class="col">
+                                    <p>Migrations: <span class="counter">123</span></p>
+                                </div>
+                            </div>
+                            <div class="border border-dark">
+                                <form class="form text-center" id="database-form" method='post'>
+                                    <pre class="mt-2 mb-0"><p id="migrations-result" class="text-success"></p></pre>
+                                    <button type="submit" class="btn btn-back  align-middle">Run unmigrated migrations.</button>
+                                </form>
+                            </div>
                         </div>
                         
-                        <div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">  
-                        <p class="card-text">First settled around 1000 BCE and then founded as the Etruscan Felsina about 500 BCE, it was occupied by the Boii in the 4th century BCE and became a Roman colony and municipium with the name of Bononia in 196 BCE. </p>
-                        <a href="#" class="card-link text-danger">Read more</a>
-                        </div>
-                        
-                        <div class="tab-pane" id="deals" role="tabpanel" aria-labelledby="deals-tab">
+                        <div class="tab-pane" id="deals" role="tabpanel">
                         <p class="card-text">Immerse yourself in the colours, aromas and traditions of Emilia-Romagna with a holiday in Bologna, and discover the city's rich artistic heritage.</p>
                         <a href="#" class="btn btn-danger btn-sm">Get Deals</a>
                         </div>
@@ -40,6 +48,13 @@
         </div>
     </div>
     <script src="{{$customdir}}/js/admin_options.js"></script>
+    <script src="{{$customdir}}/js/migrations_ajax.js"></script>
+    <script>
+    $(".counter").numScroll({
+        number: parseInt($('.counter').text()),
+        symbol: true
+    });
+    </script>
 {else}
     <p class="not-logged">You're not logged in or not enough permissions. Redirecting</p>
     <script src="{{$customdir}}/js/not_logged.js"></script>

@@ -4,6 +4,8 @@
     class Migrations {
         public $id;
         public $migration;
+        public $count;
+        public $insertedCount;
 
         function insertMigration($migration)
         {
@@ -69,11 +71,33 @@
             }
         }
 
+        function getInsertedCount()
+        {
+            global $config;
+            $checkQuery = "SELECT COUNT(*) AS `count` FROM `migrations`;";
+            $query = $config['mysqlconn']->query($checkQuery);
+            if ($query === false) {
+                throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+            }
+
+            $row = $query->fetch_object();
+            $migrationsCount = $row->count;
+            $this->insertedCount = $migrationsCount;
+            return $migrationsCount;
+        }
+
         function checkMigrations()
         {
             global $config;
             $this->checkMigrationDB();
             $migrations = glob('../sql/*.php');
+
+            if(!$migrations)
+                return false;
+
+            
+            $this->count = count($migrations);
+
             usort($migrations, function($a, $b) {
                 return filemtime($a) > filemtime($b);
             });
