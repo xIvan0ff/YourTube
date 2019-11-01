@@ -22,7 +22,7 @@
 	$config['mysqlname'] = '';
     
     //             -- Don't touch under this line --
-    $config['installed'] = '1';
+    $config['installed'] = '0';
     $config['version'] = '0.3.1';
     $config['nav_center'] = false; // If the navigation should be centered
 
