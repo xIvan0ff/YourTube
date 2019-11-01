@@ -1,4 +1,9 @@
 <?php
+    if(!file_exists('config/config.php'))
+    {
+      header('Location: /install');
+    }
+
     require_once('config/config.php');
     session_start();
     $template_dir = $smarty->getTemplateDir();
