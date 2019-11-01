@@ -49,7 +49,7 @@
     $smarty->assign('nav_center', $config['nav_center']);
     $smarty->assign('config', $config);
     
-    if($config['installed'] == '1')
+    if(($config['installed'] == '1') || (!empty($config['mysqlhost']) && !empty($config['mysqluser']) && !empty($config['mysqlpass']) && !empty($config['mysqlname'])))
     {
         $config['mysqlconn'] = new mysqli($config['mysqlhost'], $config['mysqluser'], $config['mysqlpass'], $config['mysqlname'], $config['mysqlport']);
         if($config['mysqlconn']->connect_error)
