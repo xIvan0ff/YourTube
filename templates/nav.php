@@ -17,7 +17,7 @@
                                 <img src="https://via.placeholder.com/100" alt="" class="img-fluid rounded-circle avatar-img" />
                             </button>
                             {else}
-                            <button type="button" class="btn border border-primary sign-btn" data-toggle="modal" data-target="#loginModal">
+                            <button type="button" class="btn border border-primary sign-btn shadow-sm" data-toggle="modal" data-target="#loginModal">
                                 <i class="fas fa-user-circle"></i>
                                 <span>Sign In</span>
                             </button>
@@ -36,21 +36,10 @@
 
                         <ul class="list-unstyled components">
                             <li class="active">
-                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <a href="{{$maindir}}">
                                     <i class="fas fa-home"></i>
                                     Home
                                 </a>
-                                <ul class="collapse list-unstyled" id="homeSubmenu">
-                                    <li>
-                                        <a href="#">Home 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Home 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Home 3</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a href="#">
@@ -75,18 +64,22 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-image"></i>
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-question"></i>
-                                    FAQ
-                                </a>
-                            </li>
+                            {if isset($account)}
+                                <li>
+                                    <a href="{{$maindir}}/profile">
+                                        <i class="fas fa-user"></i>
+                                        {{$account->username}}
+                                    </a>
+                                </li>
+                                {if $account->isAdmin()}
+                                    <li>
+                                        <a href="{{$maindir}}/admin">
+                                            <i class="fas fa-cog"></i>
+                                            Admin Panel
+                                        </a>
+                                    </li>
+                                {/if}
+                            {/if}
                             <li>
                                 <a href="#">
                                     <i class="fas fa-paper-plane"></i>

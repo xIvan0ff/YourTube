@@ -21,19 +21,39 @@
                     
                     <div class="tab-content mt-3">
                         <div class="tab-pane active" id="general" role="tabpanel">
-                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                            <a href="#" class="card-link text-danger">Read more</a>
+                            <div class="row">
+                                <div class="col-8">
+
+                                </div>
+                                <div class="col-4">
+                                    <div class="card bg-dark">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Update Checker</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Current Version: <span class="text-info" id="current-ver">{{$config.version}}</span></p>
+                                            <p>Latest Version: <span class="text-success" id="latest-ver"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="migrations" role="tabpanel">
                             <div class="row text-center">
                                 <div class="col">
-                                    <p>Migrations: <span class="counter">123</span></p>
+                                    <p>All Migrations: <span id="all-migrations" class="counter" data-duration="750">0</span></p>
                                 </div>
+                                <div class="col">
+                                    <p>Ran Migrations: <span id="ran-migrations" class="counter" data-duration="500">0</span></p>
+                                </div>
+                                <!-- <div class="col">
+                                    <p>Migrations: <span id="1-migrations" class="counter" data-count="123">0</span></p>
+                                </div> -->
                             </div>
                             <div class="border border-dark">
                                 <form class="form text-center" id="database-form" method='post'>
                                     <pre class="mt-2 mb-0"><p id="migrations-result" class="text-success"></p></pre>
-                                    <button type="submit" class="btn btn-back  align-middle">Run unmigrated migrations.</button>
+                                    <button type="submit" id="run_migrations" class="btn btn-back" disabled>Run unmigrated migrations.</button>
                                 </form>
                             </div>
                         </div>
@@ -49,12 +69,6 @@
     </div>
     <script src="{{$customdir}}/js/admin_options.js"></script>
     <script src="{{$customdir}}/js/migrations_ajax.js"></script>
-    <script>
-    $(".counter").numScroll({
-        number: parseInt($('.counter').text()),
-        symbol: true
-    });
-    </script>
 {else}
     <p class="not-logged">You're not logged in or not enough permissions. Redirecting</p>
     <script src="{{$customdir}}/js/not_logged.js"></script>

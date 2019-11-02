@@ -4,8 +4,15 @@
     class Migrations {
         public $id;
         public $migration;
+        public $migrations;
         public $count;
         public $insertedCount;
+
+        function __construct()
+        {
+            $this->getMigrations();
+            $this->getInsertedCount();
+        }
 
         function insertMigration($migration)
         {
@@ -86,17 +93,30 @@
             return $migrationsCount;
         }
 
-        function checkMigrations()
+        function getMigrations()
         {
-            global $config;
-            $this->checkMigrationDB();
             $migrations = glob('../sql/*.php');
 
             if(!$migrations)
                 return false;
-
             
             $this->count = count($migrations);
+            $this->migrations = $migrations;
+            //return $migrations;
+        }
+
+        function getMigrationsCount()
+        {
+            echo("$this->count|$this->insertedCount");
+            return true;
+        }
+
+        function checkMigrations()
+        {
+            global $config;
+            $this->checkMigrationDB();
+
+            $migrations = $this->migrations;
 
             usort($migrations, function($a, $b) {
                 return filemtime($a) > filemtime($b);
