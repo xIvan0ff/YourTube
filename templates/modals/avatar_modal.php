@@ -34,26 +34,3 @@
     </div>
   </div>
 </div>
-
-<script>
-$(function(){
-  $('#default-avatar-form input[type="radio"]').click(function(){
-    $(".default-avatar").removeClass('border');
-    $(this).next().toggleClass('border border-success', $(this).is(':checked'));
-  });
-});
-</script>
-
-<script>
-  $(function() {
-    $("#save-avatar").click(function(){
-      let avatarUploaded = $("#avatar-upload").val() != '';
-      if(avatarUploaded)
-      {
-        alert("yes");
-      } else {
-        alert("no");
-      }
-    });
-  });
-</script>

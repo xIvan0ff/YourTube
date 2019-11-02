@@ -9,8 +9,18 @@
             <div class="container d-block d-md-none">
                 <div class="row justify-content-center text-center">
                     <div class="col">
-                     <a class="btn btn-main"><i class="fas fa-book"></i></a>
+                        <a class="btn btn-main"><i class="fas fa-book"></i></a>
                     </div>
+                    {if isset($account)}
+                        <div class="col">
+                            <a class="btn btn-main" href="{{$maindir}}/profile"><i class="fas fa-user"></i></a>
+                        </div>
+                        {if $account->isAdmin()}
+                            <div class="col">
+                                <a class="btn btn-main" href="{{$maindir}}/admin"><i class="fas fa-cog"></i></a>
+                            </div>
+                        {/if}
+                    {/if}
                 </div>
             </div>
             <div class="container-fluid d-none d-md-block py-1">

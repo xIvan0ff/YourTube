@@ -158,14 +158,14 @@ p {
 }
 
 .default-avatar {
-    border-width: 3px !important;
+    border-width: 0.15rem !important;
 }
 
 .avatars-list-avatar {
     cursor: pointer;
 }
 
-div {
+* {
     word-break: break-all;
     word-wrap: break-word;
     overflow-wrap: break-word;

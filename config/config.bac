@@ -24,13 +24,14 @@
     
     //             -- Don't touch under this line --
     $config['installed'] = '0';
-    $config['version'] = '0.3.2';
+    $config['version'] = '0.3.5';
     $config['nav_center'] = false; // If the navigation should be centered
 
     //PATHS
     $config['maindir'] = dirname($_SERVER["PHP_SELF"]);
     $config['customdir'] = '/custom';
     $config['imgdir'] = '/img';
+    $config['avatardir'] = '/avatars';
 
     if(!is_dir(dirname(__DIR__,2).$config['maindir'].$config['customdir']))
         $config['maindir'] = dirname($config['maindir'], 1);
@@ -41,11 +42,13 @@
     $config['maindir'] = $protocol.$_SERVER['HTTP_HOST'].$config['maindir'];
     $config['customdir'] = $config['maindir'].$config['customdir'];
     $config['imgdir'] = $config['customdir'].$config['imgdir'];
+    $config['avatardir'] = $config['imgdir'].$config['avatardir'];
 
     $config['default_avatars'] = getDefaultAvatars();
 
     $smarty->assign('maindir', $config['maindir']);
     $smarty->assign('imgdir', $config['imgdir']);
+    $smarty->assign('avatardir', $config['avatardir']);
     $smarty->assign('customdir', $config['customdir']);
     $smarty->assign('nav_center', $config['nav_center']);
     $smarty->assign('config', $config);

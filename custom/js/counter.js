@@ -9,7 +9,7 @@ function isElementVisible($elementToBeChecked)
 
 function count()
 {
-	$( ".counter" ).each(function() {
+	$(".counter").each(function() {
 		isOnView = isElementVisible($(this));
 		if(isOnView && !$(this).hasClass('started')){
 			$(this).addClass('started');
@@ -38,4 +38,4 @@ function count()
 }
 
 $(window).scroll(count);
-$(document).ready(setTimeout(count, 500));
+$(document).ready(setTimeout(count, 1000));

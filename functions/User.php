@@ -7,6 +7,7 @@
         public $email;
         public $password;
         public $rank;
+        public $avatar;
         public $ip;
         public $regip;
 
@@ -98,6 +99,7 @@
                 $this->username = $row->username;
                 $this->email = $row->email;
                 $this->rank = $row->rank;
+                $this->avatar = $config['avatardir']."/$row->avatar";
                 $this->regip = $row->regip;
                 return true;
             }
@@ -173,8 +175,8 @@
                 default:
                     break;
             }
-
-            $query = "INSERT INTO `site_logs` VALUES (NULL, '$logType', '$logText');";
+            $currentTime = time();
+            $query = "INSERT INTO `site_logs` VALUES (NULL, '$logType', '$logText', '$currentTime');";
             $sql = $config['mysqlconn']->query($query);
 
             if ($sql === false) {

@@ -14,7 +14,7 @@
                         <div>
                             {if isset($account)}
                             <button type="button" class="avatar-btn rounded-circle border border-dark">
-                                <img src="https://via.placeholder.com/100" alt="" class="img-fluid rounded-circle avatar-img" />
+                                <img src="{{$account->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />
                             </button>
                             {else}
                             <button type="button" class="btn border border-primary sign-btn shadow-sm" data-toggle="modal" data-target="#loginModal">
