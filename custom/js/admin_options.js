@@ -34,29 +34,23 @@ $(document).ready(()=>{
     });
 });
 
-function updateMigrationsData()
-{
+$(document).ready(()=>{
+    var adminFuncUrl = maindir + "/functions/admin_functions.php";
     $.ajax({
         type: "POST",
-        url: url,
-        data: {count: '1'},
-        success: function(data)
+        url: adminFuncUrl,
+        data: {admin_data: '1'},
+        success: function(result)
         {
-            let counts = data.split('|');
-            if((typeof $('#all-migrations') !== 'undefined') && (typeof $('#ran-migrations') !== 'undefined'))
+            let data = result.split('|');
+            if((typeof $('#users-count') !== 'undefined') && (typeof $('#logs-count') !== 'undefined'))
             {
-                $('#all-migrations').attr('data-count', counts[0]);
-                $('#ran-migrations').attr('data-count', counts[1]);
-                $('#all-migrations, #ran-migrations').removeClass('started');
-                count();
-                $('#run-migrations').attr("disabled", !(counts[0]>counts[1] && (typeof $('#run-migrations') !== 'undefined')));
+                $('#users-count').attr('data-count', data[0]);
+                $('#logs-count').attr('data-count', data[1]);
             }
         }
     });
-}
-
-$(window).on('load', updateMigrationsData);
-$("#database-form").submit(updateMigrationsData);
+});
 
 // VERSION COMPARE FUNCTION //
 

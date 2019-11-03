@@ -37,4 +37,6 @@ function count()
 }
 
 $(window).scroll(count);
-$(document).ready(setTimeout(count, 1000));
+$(document).ready(() => {
+    setTimeout(count, 500);
+});

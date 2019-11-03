@@ -23,7 +23,28 @@
                         <div class="tab-pane active" id="general" role="tabpanel">
                             <div class="row">
                                 <div class="col-12 col-md-8">
-                                    <p class="text-warning">TODO: UPDATE CONFIG</p>    
+                                    <div class="row text-center justify-content-around">
+                                        <div class="col-3">
+                                            <div class="card bg-dark">
+                                                <div class="card-header">
+                                                    <h6 class="card-title m-0">Users</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                <p class="card-text font-weight-bold"><span id="users-count" class="counter" data-duration="2000"></span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card bg-dark">
+                                                <div class="card-header">
+                                                    <h6 class="card-title m-0">Logs</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                <p class="card-text font-weight-bold"><span id="logs-count" class="counter" data-duration="5000"></span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
                                 </div>
                                 <div class="col-12 col-md-4 text-center">
                                     <div class="card bg-dark">
