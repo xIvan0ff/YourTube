@@ -25,7 +25,7 @@
             </form>
             <!-- <img src="https://via.placeholder.com/100" alt="" class="img-fluid rounded-circle avatar-img" />   -->
           </div>
-        <p id="result"></p>
+        <pre id="avatar-result" class="mt-3"></pre>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

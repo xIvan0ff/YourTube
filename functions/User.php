@@ -260,6 +260,23 @@
               
             return false;
         }
+
+        function updateDefaultAvatar($defaultavatar)
+        {
+            global $config;
+
+            $avatar = "default/$defaultavatar";
+
+            $sql = "UPDATE `accounts` SET avatar = '$avatar' WHERE id = '$this->id';";
+
+            $query = $config['mysqlconn']->query($sql);
+
+            if ($query === false) {
+                throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+            }
+
+            return true;
+        }
     }
 
 ?>

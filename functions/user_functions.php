@@ -13,6 +13,8 @@
         $action = 1;
     if(isset($_POST['logout']))
         $action = 2;
+    if(isset($_POST['defaultavatar']))
+        $action = 3;
 
     switch($action)
     {
@@ -26,8 +28,6 @@
             {
                 die('0');
             }
-            die('1');
-
             break;
         case 1:
             $user = new User($_POST['register_user'], $_POST['register_password'], $_POST['register_email']);
@@ -35,6 +35,10 @@
         case 2:
             $user = unserialize($_SESSION['account']);
             $user->logout();
+            break;
+        case 3:
+            $user = unserialize($_SESSION['account']);
+            $user->updateDefaultAvatar($_POST['defaultavatar']);
             break;
         default:
             break;
