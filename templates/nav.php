@@ -13,9 +13,20 @@
                         {if $nav_center == false}
                         <div>
                             {if isset($account)}
-                            <button type="button" class="avatar-btn rounded-circle border border-dark">
-                                <img src="{{$account->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />
-                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="avatar-btn rounded-circle border border-dark" id="dropdownMenuButton" data-target="#profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="{{$account->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />
+                                </button>
+                                <div class="dropdown">
+                                    <div class="dropdown-menu dropdown-menu-right bg-dark" id="profile-dropdown">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                            </div>
                             {else}
                             <button type="button" class="btn border border-primary sign-btn shadow-sm" data-toggle="modal" data-target="#loginModal">
                                 <i class="fas fa-user-circle"></i>

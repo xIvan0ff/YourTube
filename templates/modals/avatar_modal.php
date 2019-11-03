@@ -16,12 +16,26 @@
           <p>Or pick one from ours below</p>
           <div class="border border-dark pt-2">
             <form class="form mb-0" id="default-avatar-form" method='post'>
-              {foreach $config.default_avatars as $avatar}
-              <label class="avatars-list-avatar rounded-circle">
-                  <input class="avatar-radio" type="radio" name="avatar-name" value="{{$avatar}}">
-                  <img class="img-fluid rounded-circle avatar-img default-avatar" src="{{$imgdir}}/avatars/default/{{$avatar}}">
-              </label>
-              {/foreach}
+              <div>
+              {if $account->isAdmin()}<p>Normal Avatars:</p>{/if}
+                {foreach $config.default_avatars as $avatar}
+                <label class="avatars-list-avatar rounded-circle">
+                    <input class="avatar-radio" type="radio" name="avatar-name" value="{{$avatar}}">
+                    <img class="img-fluid rounded-circle avatar-img default-avatar" src="{{$imgdir}}/avatars/default/{{$avatar}}">
+                </label>
+                {/foreach}
+              </div>
+              {if $account->isAdmin()}
+              <div>
+              <p>Administrator Avatars:</p>
+              {foreach $config.admin_avatars as $avatar}
+                  <label class="avatars-list-avatar rounded-circle">
+                      <input class="avatar-radio" type="radio" name="avatar-name" value="admin/{{$avatar}}">
+                      <img class="img-fluid rounded-circle avatar-img default-avatar" src="{{$imgdir}}/avatars/default/admin/{{$avatar}}">
+                  </label>
+                {/foreach}
+              </div>
+              {/if}
             </form>
             <!-- <img src="https://via.placeholder.com/100" alt="" class="img-fluid rounded-circle avatar-img" />   -->
           </div>

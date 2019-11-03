@@ -172,6 +172,9 @@
                 case 4:
                     $logText = "Account ($this->username) logged out (IP: $this->ip).";
                     break;
+                case 5:
+                    $logText = "Account ($this->username) changed his profile picture to ($this->avatar) (IP: $this->ip).";
+                    break;
                 default:
                     break;
             }
@@ -275,6 +278,8 @@
                 throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
             }
 
+            $this->avatar = $avatar;
+            $this->addLog(5);
             return true;
         }
     }

@@ -11,7 +11,7 @@
                         <a class="nav-link bg-transparent border-0" href="#migrations" role="tab" aria-controls="migrations" aria-selected="false">Migrations</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link bg-transparent border-0" href="#deals" role="tab" aria-controls="deals" aria-selected="false">Deals</a>
+                        <a class="nav-link bg-transparent border-0" href="#config" role="tab" aria-controls="config" aria-selected="false">Config</a>
                         </li>
                     </ul>
                     </div>
@@ -22,18 +22,18 @@
                     <div class="tab-content mt-3">
                         <div class="tab-pane active" id="general" role="tabpanel">
                             <div class="row">
-                                <div class="col col-md-8">
+                                <div class="col-12 col-md-8">
                                     <p class="text-warning">TODO: UPDATE CONFIG</p>    
                                 </div>
-                                <div class="col col-md-4 text-center">
+                                <div class="col-12 col-md-4 text-center">
                                     <div class="card bg-dark">
                                         <div class="card-header">
-                                            <h5 class="card-title">Version Checker</h5>
+                                            <h5 class="card-title m-0">Version Checker</h5>
                                         </div>
                                         <div class="card-body">
                                             <div class="d-none" id="version-compare">                                      
-                                                <p>Current Version: <span class="text-info" id="current-ver">{{$config.version}}</span></p>
-                                                <p>Latest Version: <span class="text-success" id="latest-ver"></span></p>
+                                                <p class="m-0">Current Version: <span class="text-info" id="current-ver">{{$config.version}}</span></p>
+                                                <p class="m-0">Latest Version: <span class="text-success" id="latest-ver"></span></p>
                                                 <pre id="version-check" class="text-primary"></pre>
                                                 <a role="button" class="btn btn-back" target="_blank" href="https://github.com/xIvan0ff/YourTube">Open Github</a>
                                             </div>
@@ -43,18 +43,30 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="migrations" role="tabpanel">
-                            <div class="row text-center">
-                                <div class="col">
-                                    <p>All Migrations: <span id="all-migrations" class="counter" data-duration="1250"></span></p>
+                            <div class="row text-center justify-content-around">
+                                <div class="col-3">
+                                    <div class="card bg-dark">
+                                        <div class="card-header">
+                                            <h6 class="card-title m-0">All Migrations</h6>
+                                        </div>
+                                        <div class="card-body">
+                                           <p class="card-text font-weight-bold"><span id="all-migrations" class="counter" data-duration="1250"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p>Ran Migrations: <span id="ran-migrations" class="counter" data-duration="500"></span></p>
+                                <div cla
+                                <div class="col-3">
+                                    <div class="card bg-dark">
+                                        <div class="card-header">
+                                            <h6 class="card-title m-0">Ran Migrations</h6>
+                                        </div>
+                                        <div class="card-body">
+                                           <p class="card-text font-weight-bold"><span id="ran-migrations" class="counter" data-duration="1250"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- <div class="col">
-                                    <p>Migrations: <span id="1-migrations" class="counter" data-count="123">0</span></p>
-                                </div> -->
                             </div>
-                            <div class="border border-dark">
+                            <div class="border border-dark mt-2">
                                 <form class="form text-center" id="database-form" method='post'>
                                     <pre class="mt-2 mb-0"><p id="migrations-result" class="text-success"></p></pre>
                                     <button type="submit" id="run-migrations" class="btn btn-back" disabled>Run unmigrated migrations.</button>
@@ -62,9 +74,7 @@
                             </div>
                         </div>
                         
-                        <div class="tab-pane" id="deals" role="tabpanel">
-                        <p class="card-text">Immerse yourself in the colours, aromas and traditions of Emilia-Romagna with a holiday in Bologna, and discover the city's rich artistic heritage.</p>
-                        <a href="#" class="btn btn-danger btn-sm">Get Deals</a>
+                        <div class="tab-pane" id="config" role="tabpanel">
                         </div>
                     </div>
                 </div>

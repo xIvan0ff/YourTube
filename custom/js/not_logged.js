@@ -1,13 +1,13 @@
-let count = 0;
+let countDots = 0;
 function updateText(element)
 {
     element.text(element.text() + ".");
-    if(count >= 2)
+    if(countDots >= 2)
     {
         location.href = maindir;
     } else {
         setTimeout(updateText, 100, element);
-        count++;
+        countDots++;
     }
 }
 $(document).ready(() => {

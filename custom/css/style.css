@@ -143,7 +143,7 @@ p {
     color: var(--primary) !important;
 }
 
-.modal-header, .modal-footer {
+.modal-header, .modal-footer, .dropdown-divider {
     border-color: rgba(58, 58, 58, 1);
 }
 
@@ -169,4 +169,22 @@ p {
     word-break: break-all;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+pre {
+    white-space:pre-wrap;
+}
+
+::selection {
+    background-color: #333;
+    color: white;
+}
+
+.dropdown-item {
+    color: rgb(230, 230, 230);
+}
+
+.dropdown-item:hover {
+    background-color: #333;
+    color: white;
 }

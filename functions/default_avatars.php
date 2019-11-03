@@ -1,5 +1,4 @@
 <?php
-    // include("../config/config.php");
     function getDefaultAvatars()
     {
 
@@ -15,8 +14,23 @@
             $imageName = basename($image);
             array_push($imagesArray, $imageName);
         }
-        // print_r($imagesArray);
         return $imagesArray;
     }
-    // getDefaultAvatars();
+    function getAdminAvatars()
+    {
+
+        $imagesArray = array();
+
+        $directory = "custom/img/avatars/default/admin/";
+        if(!file_exists($directory))
+            $directory = "../$directory";
+
+        $images = glob($directory . "/*.png");
+        foreach($images as $image)
+        {
+            $imageName = basename($image);
+            array_push($imagesArray, $imageName);
+        }
+        return $imagesArray;
+    }
 ?>

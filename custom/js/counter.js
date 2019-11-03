@@ -11,11 +11,10 @@ function count()
 {
 	$(".counter").each(function() {
 		isOnView = isElementVisible($(this));
-		if(isOnView && !$(this).hasClass('started')){
+		var countTo = $(this).attr('data-count');
+		if(isOnView && (!$(this).hasClass('started') || parseInt($(this).text()) < countTo)){
 			$(this).addClass('started');
-			var $this = $(this),
-			countTo = $this.attr('data-count');
-			// countDur = 4000;
+			var $this = $(this);
 			countDur = parseInt($this.attr('data-duration')) || 4000;
 			$({ countNum: $this.text()}).animate({
 			countNum: countTo
