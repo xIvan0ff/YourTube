@@ -16,6 +16,7 @@ $(document).ready(()=>{
             let compare = versionCompare(currentVer, latestVer);
         
             let text;
+            
             switch(compare)
             {
                 case 0:
@@ -28,6 +29,7 @@ $(document).ready(()=>{
                     text = '<span class="text-warning">You are using a modified version.</span>';
                     break;
             }
+
             $("#version-check").html(text);
             $("#version-compare").removeClass("d-none");
         }

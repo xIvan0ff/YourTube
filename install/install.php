@@ -2,9 +2,7 @@
     if(isset($_POST) && !empty($_POST))
     {
         require_once("../functions/update_cfg.php");
-        foreach($_POST as $key => $value) {
-            updateConfig($key, $value);
-        }
+        updateConfigPost($_POST);
     }
 
     if(file_exists('../config/config.bac') && !file_exists('../config/config.php'))
@@ -24,8 +22,7 @@
     ->setCompileDir('../templates_c')
     ->setCacheDir('../cache');
 
-    $template_dir = $smarty->getTemplateDir();
-    $template_dir = $template_dir[0];
+    $template_dir = $smarty->getTemplateDir()[0];
 
     $smarty->assign('nav_center', true);
     $smarty->assign('display_sidebar', true);
@@ -38,7 +35,10 @@
             $_GET['step'] = 1;
             $_SESSION['step'] = 1;
         } else {
-            if($_GET['step'] == $_SESSION['step']+1)
+            if($_GET['step'] == 'final')
+            {
+                header("Location: ./");
+            } elseif($_GET['step'] == $_SESSION['step']+1)
             {
                 $_SESSION['step'] = $_GET['step'];
             } else {

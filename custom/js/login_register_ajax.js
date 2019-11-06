@@ -1,11 +1,14 @@
-var url = maindir + "/functions/user_functions.php";
 
-var p = $('#result');
 
-$("#login-form").submit(function(e) {
+$("#login-form, #register-form").submit(function(e) {
 
     e.preventDefault();
-    var form = $(this);
+    let form = $(this);
+    let url = maindir + "/functions/user_functions.php";
+
+    let p = $('#login-result');
+    if(form.is("#register-form"))
+        p = $('#register-result');
 
     $.ajax({
             type: "POST",
@@ -21,17 +24,33 @@ $("#login-form").submit(function(e) {
                     color += 'warning';
                     text = result;
                 } else {
-                    switch(result)
-                    {
-                        case '0':
-                            text = 'Username/Password missmatch.';
-                            color += 'danger';
-                            break;
-                        case '1':
-                            text = 'Successful login. The page will be reloaded...';
-                            color+= 'success';
-                            reload = true;
-                            break;
+                    result = parseInt(result);
+                    if(form.is("#login-form")) {
+                        switch(result)
+                        {
+                            case 0:
+                                text = 'Username/Password missmatch.';
+                                color += 'danger';
+                                break;
+                            case 1:
+                                text = 'Successful login. The page will be reloaded...';
+                                color+= 'success';
+                                reload = true;
+                                break;
+                        }
+                    } else {
+                        switch(result)
+                        {
+                            case 0:
+                                text = 'Account already exists.';
+                                color += 'danger';
+                                break;
+                            case 1:
+                                text = 'Successful register. The page will be reloaded...';
+                                color+= 'success';
+                                reload = true;
+                                break;
+                        }
                     }
                 }
                 

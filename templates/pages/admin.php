@@ -30,7 +30,7 @@
                                                     <h6 class="card-title m-0">Users</h6>
                                                 </div>
                                                 <div class="card-body">
-                                                <p class="card-text font-weight-bold"><span id="users-count" class="counter" data-duration="2000"></span></p>
+                                                <p class="card-text font-weight-bold"><span id="users-count" class="counter" data-duration="750"></span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -40,7 +40,7 @@
                                                     <h6 class="card-title m-0">Logs</h6>
                                                 </div>
                                                 <div class="card-body">
-                                                <p class="card-text font-weight-bold"><span id="logs-count" class="counter" data-duration="5000"></span></p>
+                                                <p class="card-text font-weight-bold"><span id="logs-count" class="counter" data-duration="1000"></span></p>
                                                 </div>
                                             </div>
                                         </div>

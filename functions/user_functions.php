@@ -24,12 +24,18 @@
                 die($errors);
 
             if(!$user->login())
-            {
                 die('0');
-            }
+
             break;
         case 1:
             $user = new User($_POST['register_user'], $_POST['register_password'], $_POST['register_email']);
+            $errors = $user->getErrors();
+            if($errors)
+                die($errors);
+
+            if(!$user->create())
+                die('0');
+                
             break;
         case 2:
             $user = unserialize($_SESSION['account']);

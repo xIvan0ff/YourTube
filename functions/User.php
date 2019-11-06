@@ -13,14 +13,14 @@
 
         function __construct($username, $password, $email = NULL)
         {
-            if(filter_var($username, FILTER_VALIDATE_EMAIL))
+            if(filter_var($username, FILTER_VALIDATE_EMAIL) && empty($email))
             {
                 $this->email = $username;
             } else {
                 $this->username = $username;
             }
 
-            $this->password = hash('sha256', $password);
+            $this->password = $password;
             
             if($email)
                 $this->email = $email;
@@ -150,6 +150,7 @@
 
         function logout()
         {
+            $this->addLog(4);
             unset($_SESSION['account']);
         }
 
@@ -161,25 +162,27 @@
             switch($logType)
             {
                 case 1:
-                    $logText = "Account (#$this->id) failed a login attempt (IP: $this->ip).";
+                    $logText = "Account ($this->username#$this->id) failed a login attempt (IP: $this->ip).";
                     break;
                 case 2:
-                    $logText = "Account (#$this->id) successfully logged in (IP: $this->ip).";
+                    $logText = "Account ($this->username#$this->id) successfully logged in (IP: $this->ip).";
                     break;
                 case 3:
                     $logText = "(IP: $this->ip) tried to login with invalid username ($this->username).";
                     break;
                 case 4:
-                    $logText = "Account ($this->username) logged out (IP: $this->ip).";
+                    $logText = "Account ($this->username#$this->id) logged out (IP: $this->ip).";
                     break;
                 case 5:
-                    $logText = "Account ($this->username) changed his profile picture to ($this->avatar) (IP: $this->ip).";
+                    $logText = "Account ($this->username#$this->id) changed his profile picture to ($this->avatar) (IP: $this->ip).";
                     break;
+                case 6:
+                    $logText = "Account ($this->username#$this->id) was created (IP: $this->ip).";
                 default:
                     break;
             }
             $currentTime = time();
-            $query = "INSERT INTO `site_logs` VALUES (NULL, '$logType', '$logText', '$currentTime');";
+            $query = "INSERT INTO `site_logs` VALUES (NULL, '$logType', '$logText', '$currentTime', 'user');";
             $sql = $config['mysqlconn']->query($query);
 
             if ($sql === false) {
@@ -197,7 +200,9 @@
                 return false;
             }
 
-            $sql = "SELECT * FROM `accounts` WHERE username = '$this->username' AND password = '$this->password';";
+            $password = hash('sha256', $this->password);
+
+            $sql = "SELECT * FROM `accounts` WHERE username = '$this->username' AND password = '$password';";
 
             $query = $config['mysqlconn']->query($sql);
 
@@ -226,13 +231,20 @@
                 return false;
 
 
-            $sql = "INSERT INTO `accounts` VALUES (NULL, '$this->username', '$this->email', '$this->password', '$this->$ip')";
+            $password = hash('sha256', $this->password);
+
+            $sql = "INSERT INTO `accounts`(username, email, password, regip) VALUES ('$this->username', '$this->email', '$password', '$this->ip')";
 
             $query = $config['mysqlconn']->query($sql);
 
             if ($query === false) {
                 throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
             }
+
+            $this->fillData();
+            $_SESSION['account'] = serialize($this);
+
+            $this->addLog(6);
 
             return true;
         }

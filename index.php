@@ -5,11 +5,9 @@
     }
 
     require_once('config/config.php');
-    $template_dir = $smarty->getTemplateDir();
-    $template_dir = $template_dir[0];
+    $template_dir = $smarty->getTemplateDir()[0];
     $page = 'index.php';
     if ( $config['installed'] ) {
-      //todo page select
       if(isset($_GET['p']) && !empty($_GET['p']))
       {
         $page = 'pages/'.$_GET['p'].'.php';
