@@ -24,25 +24,25 @@
                             <div class="row">
                                 <div class="col-12 col-md-8">
                                     <div class="row text-center justify-content-around">
-                                        <div class="col-3">
+                                        <div class="col-6">
+                                           <div class="card-deck">
                                             <div class="card bg-dark">
-                                                <div class="card-header">
-                                                    <h6 class="card-title m-0">Users</h6>
+                                                    <div class="card-header">
+                                                        <h6 class="card-title m-0">Users</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                    <p class="card-text font-weight-bold"><span id="users-count" class="counter" data-duration="750">0</span></p>
+                                                    </div>
                                                 </div>
-                                                <div class="card-body">
-                                                <p class="card-text font-weight-bold"><span id="users-count" class="counter" data-duration="750"></span></p>
+                                                <div class="card bg-dark">
+                                                    <div class="card-header">
+                                                        <h6 class="card-title m-0">Logs</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                    <p class="card-text font-weight-bold"><span id="logs-count" class="counter" data-duration="1000">0</span></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="card bg-dark">
-                                                <div class="card-header">
-                                                    <h6 class="card-title m-0">Logs</h6>
-                                                </div>
-                                                <div class="card-body">
-                                                <p class="card-text font-weight-bold"><span id="logs-count" class="counter" data-duration="1000"></span></p>
-                                                </div>
-                                            </div>
+                                           </div>
                                         </div>
                                     </div>  
                                 </div>
@@ -65,24 +65,23 @@
                         </div>
                         <div class="tab-pane" id="migrations" role="tabpanel">
                             <div class="row text-center justify-content-around">
-                                <div class="col-3">
-                                    <div class="card bg-dark">
-                                        <div class="card-header">
-                                            <h6 class="card-title m-0">All Migrations</h6>
+                                <div class="col-8 col-lg-6">
+                                    <div class="card-deck">
+                                        <div class="card bg-dark">
+                                            <div class="card-header">
+                                                <h6 class="card-title m-0">All Migrations</h6>
+                                            </div>
+                                            <div class="card-body">
+                                            <p class="card-text font-weight-bold"><span id="all-migrations" class="counter" data-duration="1250"></span></p>
+                                            </div>
                                         </div>
-                                        <div class="card-body">
-                                           <p class="card-text font-weight-bold"><span id="all-migrations" class="counter" data-duration="1250"></span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div cla
-                                <div class="col-3">
-                                    <div class="card bg-dark">
-                                        <div class="card-header">
-                                            <h6 class="card-title m-0">Ran Migrations</h6>
-                                        </div>
-                                        <div class="card-body">
-                                           <p class="card-text font-weight-bold"><span id="ran-migrations" class="counter" data-duration="1250"></span></p>
+                                        <div class="card bg-dark">
+                                            <div class="card-header">
+                                                <h6 class="card-title m-0">Ran Migrations</h6>
+                                            </div>
+                                            <div class="card-body">
+                                            <p class="card-text font-weight-bold"><span id="ran-migrations" class="counter" data-duration="1250"></span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +102,6 @@
         </div>
     </div>
     <script src="{{$customdir}}/js/admin_options.js"></script>
-    <script src="{{$customdir}}/js/migrations_ajax.js"></script>
 {else}
     <p class="not-logged">You're not logged in or not enough permissions. Redirecting</p>
     <script src="{{$customdir}}/js/not_logged.js"></script>

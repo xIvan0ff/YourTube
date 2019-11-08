@@ -22,9 +22,6 @@
             var customdir = '{$customdir}';
             var imgdir = '{$imgdir}';
         </script>
-
-        <script src="{{$customdir}}/js/logout_ajax.js"></script>
-
         <title>{if $config.installed}{if isset($video)}{{$video}} - {/if}{{$config.name}}{if isset($page) && !isset($video)} - {{$page|capitalize}}{/if}{else}Install YourTube{/if}</title>
     </head>
     <body>

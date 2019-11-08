@@ -44,6 +44,29 @@ class Admin {
     {
         return "$this->usersCount|$this->logsCount";
     }
+
+    function getUser($idOrUsername)
+    {
+        global $config;
+
+        $sql = "SELECT * FROM `accounts` WHERE username = '$idOrUsername' OR id = '$idOrUsername';";
+
+        $query = $config['mysqlconn']->query($sql);
+
+        if ($query === false) {
+            throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+        }
+
+        $row = $query->fetch_object();
+        if($row)
+        {
+            $user = new User($row->username, $row->password);
+            return $user;
+        }
+        
+        return false;  
+    }
+
 }
 
 ?>

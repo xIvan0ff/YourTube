@@ -45,7 +45,7 @@ $(document).ready(()=>{
         success: function(result)
         {
             let data = result.split('|');
-            if((typeof $('#users-count') !== 'undefined') && (typeof $('#logs-count') !== 'undefined'))
+            if($('#users-count').length && $('#logs-count').length)
             {
                 $('#users-count').attr('data-count', data[0]);
                 $('#logs-count').attr('data-count', data[1]);

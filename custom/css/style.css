@@ -131,16 +131,22 @@ p {
     transform: rotate(90deg);
 }
 
+.sign-btn:active, .sign-btn:focus, .sign-btn:hover {
+    box-shadow: 
+      -0.1em -0.1em 0 0 var(--primary),
+      inset -0.1em -0.1em 0 0 var(--primary);
+    background-color: rgba(58, 58, 58, 1);
+    color: var(--primary) !important;
+}
+
 .sign-btn {
     color: var(--primary);
     border-radius: unset;
     text-transform: uppercase;
-    transition: all 0.2s;
-}
-
-.sign-btn:active, .sign-btn:focus, .sign-btn:hover {
-    background-color: rgba(58, 58, 58, 1);
-    color: var(--primary) !important;
+    transition: 0.25s;
+    box-shadow: 
+      0.1em 0.1em 0 0 var(--primary),
+      inset 0.1em 0.1em 0 0 var(--primary);
 }
 
 .modal-header, .modal-footer, .dropdown-divider {

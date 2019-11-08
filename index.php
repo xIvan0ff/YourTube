@@ -6,10 +6,43 @@
 
     require_once('config/config.php');
     $template_dir = $smarty->getTemplateDir()[0];
+
+    if(isset($_SESSION['account']))
+    {
+      $user = unserialize($_SESSION['account']);
+      $user->updateData();
+      $smarty->assign('account', $user);
+    }
+
     $page = 'index.php';
     if ( $config['installed'] ) {
       if(isset($_GET['p']) && !empty($_GET['p']))
       {
+        $pages = array_filter(explode("/", $_GET['p']));
+        switch($pages[0]) {
+          case 'profile':
+              if(isset($pages[1]))
+              {   
+                $admin = new Admin();
+                $search = $admin->getUser($pages[1]);
+                if($search)
+                {
+                  $smarty->assign('user', $search);
+                } else {
+                  $smarty->assign('user', '');
+                }
+              }
+            break;
+          case 'watch':
+          if(isset($pages[1]))
+          {
+          } else {
+            header("Location: ".$config['maindir']);
+          }
+          break;
+        }
+        $_GET['p'] = $pages[0];
+
         $page = 'pages/'.$_GET['p'].'.php';
         $smarty->assign('page', $_GET['p']);
         if(!file_exists($template_dir.'/'.$page))
@@ -27,13 +60,6 @@
   }
 
   $smarty->assign("display_sidebar", $page != "index.php");
-
-  if(isset($_SESSION['account']))
-  {
-    $user = unserialize($_SESSION['account']);
-    $user->updateData();
-    $smarty->assign('account', $user);
-  }
 
   $smarty->display('head.php');
   $smarty->display('nav.php');

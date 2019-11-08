@@ -4,12 +4,18 @@
             {include file="modals/login_register_modal.php"}
             <script src="{{$customdir}}/js/login_register_ajax.js"></script>
         {/if}
+        {if isset($account)}
+        <script src="{{$customdir}}/js/logout_ajax.js"></script>
+        {/if}
+        {if (isset($account) && $account->isAdmin())}
+        <script src="{{$customdir}}/js/migrations_ajax.js"></script>
+        {/if}
         <script src="{{$customdir}}/js/counter.js"></script>
         <footer class="footer footer-dark bg-dark fixed-bottom">
             <div class="container d-block d-md-none">
                 <div class="row justify-content-center text-center">
                     <div class="col">
-                        <a class="btn btn-main"><i class="fas fa-book"></i></a>
+                        <a class="btn btn-main" href="{{$maindir}}"><i class="fas fa-home"></i></a>
                     </div>
                     {if isset($account)}
                         <div class="col">

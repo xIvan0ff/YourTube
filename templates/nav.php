@@ -23,12 +23,12 @@
                                         <a class="dropdown-item" href="#">Another action</a>
                                         <a class="dropdown-item" href="#">Something else here</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a>
+                                        <a href="" class="text-danger dropdown-item logout-btn">Log out</a>
                                     </div>
                                 </div>
                             </div>
                             {else}
-                            <button type="button" class="btn border border-primary sign-btn shadow-sm" data-toggle="modal" data-target="#loginModal">
+                            <button type="button" class="btn border border-primary sign-btn" data-toggle="modal" data-target="#loginModal">
                                 <i class="fas fa-user-circle"></i>
                                 <span>Sign In</span>
                             </button>
