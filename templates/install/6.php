@@ -20,11 +20,11 @@
                                         data: $(this).serialize(),
                                         success: function (data) {
                                             $("#sixth-step").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
-                                            setTimeout(() => {$("#result").append('<p class="mt-0 pt-0 text-warning">Checking installation...</p>')}, 500);
-                                            setTimeout(() => {$("#result").append('<p class="mt-0 pt-0 text-info">No issues.</p>')}, 1500);
-                                            setTimeout(() => {$("#result").append('<p class="mt-0 pt-0 text-warning">Checking database...</p>')}, 1750);
-                                            setTimeout(() => {$("#result").append('<p class="mt-0 pt-0 text-info">No issues.</p>')}, 2250);
-                                            setTimeout(() => {$("#result").append('<p class="mt-0 pt-0 text-success">Done!</p>')}, 2500);
+                                            setTimeout(() => {$("#result").append('<p class="m-0 p-0 text-info">Checking installation...</p>')}, 500);
+                                            setTimeout(() => {$("#result").append('<span class="text-success"><i class="fas fa-check"></i></span>')}, 1500);
+                                            setTimeout(() => {$("#result").append('<p class="m-0 p-0 text-info">Checking database... </p>')}, 1750);
+                                            setTimeout(() => {$("#result").append('<span class="text-success"><i class="fas fa-check"></i></span>')}, 2250);
+                                            setTimeout(() => {$("#result").append('<p class="m-0 p-0 text-success">Done! <i class="fas fa-check-double"></i></p>')}, 2750);
                                             setTimeout(() => {location.href = maindir}, 3000);
                                         },
                                         error: function (jXHR, textStatus, errorThrown) {

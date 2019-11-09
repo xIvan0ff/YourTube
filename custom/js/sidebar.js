@@ -1,7 +1,8 @@
 function fixSizes() {
     $('.dynamic-padding').each(function(){
         $(this).css({
-            'padding-top' : $('#navbar').outerHeight() + 10 + 'px'
+            'padding-top' : $('#navbar').outerHeight() + 10 + 'px',
+            'padding-bottom' : $('#footer').outerHeight() + 10 + 'px'
         });
     });
 }

@@ -27,7 +27,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Account details for <a class="text-info">{{$profile->username}}</a></h5>
                     <div class="row">
-                        <div class="col-md-10 col-12 text-center text-md-left justify-content-center justify-content-md-start d-flex">
+                        <div class="col-sm-8 col-md-10 col-12 text-center text-sm-left justify-content-center justify-content-sm-start d-flex">
                             <div class="form w-50">
                                 <div class="form-group">
                                     <span>E-mail:</span>
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 col-12 text-center">
+                        <div class="col-sm-4 col-md-2 col-12 text-center">
                             <div>
                                 <button type="button" class="avatar-btn-big rounded-circle border border-dark" {if $editable}data-toggle="modal" data-target="#avatarModal"{else}disabled{/if}>
                                     <img src="{{$profile->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />

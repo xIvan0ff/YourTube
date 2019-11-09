@@ -15,7 +15,7 @@
                             {if isset($account)}
                             <div class="btn-group">
                                 <button type="button" class="avatar-btn rounded-circle border border-dark" id="dropdownMenuButton" data-target="#profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{$account->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />
+                                    <img src="{{$account->avatar}}" alt="" class="img-fluid rounded-circle avatar-img nav-avatar" />
                                 </button>
                                 <div class="dropdown">
                                     <div class="dropdown-menu dropdown-menu-right bg-dark" id="profile-dropdown">

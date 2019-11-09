@@ -53,10 +53,10 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="d-none" id="version-compare">                                      
-                                                <p class="m-0">Current Version: <span class="text-info" id="current-ver">{{$config.version}}</span></p>
-                                                <p class="m-0">Latest Version: <span class="text-success" id="latest-ver"></span></p>
+                                                <p class="mb-0">Current Version: <span class="text-info" id="current-ver">{{$config.version}}</span></p>
+                                                <p class="mt-0">Latest Version: <span class="text-success" id="latest-ver"></span></p>
                                                 <pre id="version-check" class="text-primary"></pre>
-                                                <a role="button" class="btn btn-back" target="_blank" href="https://github.com/xIvan0ff/YourTube">Open Github</a>
+                                                <a role="button" class="btn btn-back" target="_blank" href="https://github.com/xIvan0ff/YourTube">Open Repository <i class="fab fa-github"></i></a>
                                             </div>
                                         </div>
                                     </div>

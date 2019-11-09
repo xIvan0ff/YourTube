@@ -22,7 +22,7 @@
                                 <p id="mysql-result"><span class="font-weight-bold">Result:</span> <span id="result-text">Not Tested</span></p>
                                 
                                 <div>
-                                   <button type="button" class="btn btn-back check">Check connection</button>
+                                   <button type="button" class="btn btn-back check">Check connection <i class="fas fa-server"></i></button>
                                 </div>
                                 <div class="my-3">
                                     <button type="submit" id="forth-step" class="btn btn-back" disabled hidden>Next <i class="fas fa-arrow-circle-right"></i></button>

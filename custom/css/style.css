@@ -45,11 +45,7 @@ p {
 }
 
 #navbar {
-    max-height: 10vh;
-}
-
-.logo {
-    color: red;
+    max-height: 15vh;
 }
 
 .navbar-brand {
@@ -149,6 +145,15 @@ p {
       inset 0.1em 0.1em 0 0 var(--primary);
 }
 
+.nav-avatar:active, .nav-avatar:focus, .nav-avatar:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--primary);
+    transform: translateY(-0.05em);
+}
+
+.nav-avatar {
+    transition: 0.3s;
+}
+
 .modal-header, .modal-footer, .dropdown-divider {
     border-color: rgba(58, 58, 58, 1);
 }
@@ -171,11 +176,11 @@ p {
     cursor: pointer;
 }
 
-* {
+/* * {
     word-break: break-all;
     word-wrap: break-word;
     overflow-wrap: break-word;
-}
+} */
 
 pre {
     white-space:pre-wrap;
