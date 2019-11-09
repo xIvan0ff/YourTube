@@ -95,7 +95,7 @@ p {
     height: auto;
 }
 
-.avatar-btn, .avatar-btn-big {
+.avatar-btn, .avatar-btn-md, .avatar-btn-lg {
     padding: 0;
     background: none;
     border: none;
@@ -109,12 +109,17 @@ p {
     height: 35px;
 }
 
-.avatar-btn-big {
+.avatar-btn-md {
     width: 75px;
     height: 75px;
 }
 
-.avatar-btn:active, .avatar-btn:focus, .avatar-btn-big:active, .avatar-btn-big:focus {
+.avatar-btn-lg {
+    width: 125px;
+    height: 125px;
+}
+
+.avatar-btn:active, .avatar-btn:focus, .avatar-btn-md:active, .avatar-btn-md:focus, .avatar-btn-lg:active, .avatar-btn-lg:focus {
     border-color: var(--primary) !important;
 }
 

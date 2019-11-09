@@ -13,6 +13,9 @@
             <input type="file" id="avatar-upload" accept="image/*" >
           </div>
         </form>
+        <button type="button" class="avatar-btn-lg rounded-circle border border-dark" disabled>
+            <img id="display-avatar" src="{{$profile->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />
+        </button>
           <p>Or pick one from ours below</p>
           <div class="border border-dark pt-2">
             <form class="form mb-0" id="default-avatar-form" method='post'>

@@ -57,3 +57,15 @@ function updateAvatar(avatarType, avatarFile)
         }
     });
 }
+
+$('#avatar-upload').change(function(e) {
+    // var fileName = e.target.files[0].name;
+    // $("#avatar-upload").val(fileName);
+  
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $('#display-avatar')
+            .attr('src', e.target.result);
+    };
+    reader.readAsDataURL(this.files[0]);
+  });

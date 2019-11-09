@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-sm-4 col-md-2 col-12 text-center">
                             <div>
-                                <button type="button" class="avatar-btn-big rounded-circle border border-dark" {if $editable}data-toggle="modal" data-target="#avatarModal"{else}disabled{/if}>
+                                <button type="button" class="avatar-btn-md rounded-circle border border-dark" {if $editable}data-toggle="modal" data-target="#avatarModal"{else}disabled{/if}>
                                     <img src="{{$profile->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />
                                 </button>
                                 {if $editable}
