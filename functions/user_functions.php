@@ -1,6 +1,6 @@
 <?php
     if(empty($_POST))
-        header('Location: ../');
+        die('0');
 
     require_once('../config/config.php');
 
@@ -14,6 +14,8 @@
         $action = 2;
     if(isset($_POST['defaultavatar']))
         $action = 3;
+    if(isset($_POST['customavatar']))
+        $action = 4;
 
     switch($action)
     {
@@ -44,6 +46,10 @@
         case 3:
             $user = unserialize($_SESSION['account']);
             $user->updateDefaultAvatar($_POST['defaultavatar']);
+            break;
+        case 4:
+            $user = unserialize($_SESSION['account']);
+            die($user->updateCustomAvatar($_FILES['avatar-file']));
             break;
         default:
             break;

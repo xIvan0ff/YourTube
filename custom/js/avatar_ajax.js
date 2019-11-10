@@ -9,42 +9,49 @@ $(function() {
     $("#save-avatar").click(function(){
         let avatarUploaded = $("#avatar-upload").val() != '';
         let defaultAvatar = $('input[name="avatar-name"]:checked').val();
-        if(avatarUploaded && defaultAvatar)
-        {
-            alert("Both selected");
-        } else if (avatarUploaded && !defaultAvatar) {
-            alert("Avatar, no default.")
+        if ((avatarUploaded && !defaultAvatar) || (avatarUploaded && defaultAvatar)) {
+            updateAvatar("customavatar", '');
         } else if (!avatarUploaded && defaultAvatar) {
             updateAvatar("defaultavatar", defaultAvatar);
         } else if (!(avatarUploaded && defaultAvatar)) {
-            alert("nothing selected");
+            $('#avatar-result').html('<span class="text-warning">Please, either select a photo from your gallery or a default one.</span>');
         }
     });
 });
 
 function updateAvatar(avatarType, avatarFile)
 {
-    var url = maindir + "/functions/user_functions.php";
-    var parameters = {};
-    parameters[avatarType] =  avatarFile;
+    var url = maindir + "/functions/user_functions.php";     
+    var parameters = new FormData();
+    parameters.append(avatarType, avatarFile)
+    if(avatarType == "customavatar") { 
+        parameters.append('avatar-file', $('#avatar-upload')[0].files[0]);
+    }
     $.ajax({
         type: "POST",
         url: url,
         data: parameters,
+        processData: false,
+        contentType: false,
         success: function(result)
         {
-            result = parseInt(result);
             let text;
             let refresh = false;
-            switch(result)
-            {
-                case 0:
-                    text = '<span class="text-danger">Avatar couldn\'t be updated.</span>'
-                    break;
-                case 1:
-                    refresh = true;
-                    text = '<span class="text-success">Avatar was updated. Reloading...</span>'
-                    break;
+            console.log(result);
+            if (result.length > 1) {
+                text = '<span class="text-warning">' + result + '</span>';
+            } else {
+                result = parseInt(result);
+                switch(result)
+                {
+                    case 0:
+                        text = '<span class="text-danger">Avatar was not updated.</span>'
+                        break;
+                    case 1:
+                        refresh = true;
+                        text = '<span class="text-success">Avatar was updated. Reloading...</span>'
+                        break;
+                }
             }
 
             $('#avatar-result').html(text);
@@ -53,19 +60,26 @@ function updateAvatar(avatarType, avatarFile)
 
             setTimeout(() => {
                 location.reload();
-            }, 1000);
+            }, 500);
         }
     });
 }
 
+$('#avatar-change').click(()=>{$('#avatar-upload').click()});
+
 $('#avatar-upload').change(function(e) {
-    // var fileName = e.target.files[0].name;
-    // $("#avatar-upload").val(fileName);
-  
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $('#display-avatar')
-            .attr('src', e.target.result);
-    };
-    reader.readAsDataURL(this.files[0]);
+    var file = this.files[0];
+    var fileType = file["type"];
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
+        $('#avatar-warning').html('<span class="text-danger">Uploaded file is not an image!</span>');  
+   } else {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#display-avatar')
+                .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(file);
+        $('#avatar-warning').html('<span class="text-success">Avatar uploaded. Save changes when you are done.</span>');
+    }
   });

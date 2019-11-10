@@ -294,6 +294,60 @@
             $this->addLog(5);
             return true;
         }
+
+        function updateCustomAvatar($customavatar)
+        {
+            global $config;
+
+            $avatar = $customavatar;
+
+            $fileExtensions = ['jpeg','jpg','png'];
+
+            $fileName = $avatar['name'];
+            $fileSize = $avatar['size'];
+            $fileTmpName  = $avatar['tmp_name'];
+            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+            $errors = [];
+
+            $avatarName = $this->id.'.'.$fileType;
+
+            $path = "../custom/img/avatars/".$avatarName;
+            
+            if (! in_array($fileType,$fileExtensions)) {
+                $errors[] = "This file extension is not allowed. Please upload an image.";
+            }
+    
+            if ($fileSize > 2000000) {
+                $errors[] = "This file is more than 2MB. Sorry, it has to be less than or equal to 2MB";
+            }
+    
+            if (empty($errors)) {
+                $didUpload = move_uploaded_file($fileTmpName, $path);
+    
+                if (!$didUpload) {
+                    return false;
+                }
+            } else {
+                $errorText = '';
+                foreach ($errors as $error) {
+                    $errorText .= $error ."<br />";
+                }
+                return $errorText;
+            }
+
+            $sql = "UPDATE `accounts` SET avatar = '$avatarName' WHERE id = '$this->id';";
+
+            $query = $config['mysqlconn']->query($sql);
+
+            if ($query === false) {
+                throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+            }
+
+            $this->avatar = $avatarName;
+            $this->addLog(5);
+            return true;
+        }
     }
 
 ?>

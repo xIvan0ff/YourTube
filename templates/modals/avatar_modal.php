@@ -9,13 +9,13 @@
       </div>
       <div class="modal-body text-center">
         <form class="form" id="avatar-form" method='post'>
-          <div class="form-group">
-            <input type="file" id="avatar-upload" accept="image/*" >
-          </div>
+            <input type="file" id="avatar-upload" name="avatar-file" accept="image/*" >
         </form>
-        <button type="button" class="avatar-btn-lg rounded-circle border border-dark" disabled>
+        <button type="button" class="avatar-btn-lg rounded-circle border border-dark" id="avatar-change">
             <img id="display-avatar" src="{{$profile->avatar}}" alt="" class="img-fluid rounded-circle avatar-img" />
+            <!-- <i class="fa fa-camera upload-button"></i> -->
         </button>
+          <pre id="avatar-warning" class="mt-3"></pre>
           <p>Or pick one from ours below</p>
           <div class="border border-dark pt-2">
             <form class="form mb-0" id="default-avatar-form" method='post'>
