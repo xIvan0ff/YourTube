@@ -2,5 +2,7 @@ templates_c/
 .vscode/
 config/config.php
 
-custom/img/avatars/*
-!custom/img/avatars/default/*
+!/custom/img/avatars/
+
+/custom/img/avatars/*
+!/custom/img/avatars/default/
