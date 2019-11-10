@@ -11,6 +11,7 @@
     {
       $user = unserialize($_SESSION['account']);
       $user->updateData();
+      $_SESSION['account'] = serialize($user);
       $smarty->assign('account', $user);
     }
 
