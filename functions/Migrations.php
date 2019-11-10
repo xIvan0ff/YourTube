@@ -22,12 +22,13 @@
 
             $queries = array();
             require_once($migration);
-            $migrationId = basename($migration, ".php");
-            $isMigrated = $this->checkMigration($migrationId);
+            $migrationName = basename($migration, ".php");
+            $migrationId = explode('_', $migrationName)[0];
+            $isMigrated = $this->checkMigration($migrationName);
             if($isMigrated)
                 return false;
-            echo("Executing migration #$migrationId<br/>");
-            $migrationQuery = "INSERT INTO `migrations` (`id`, `migration`) VALUES (NULL, '$migrationId')";
+            echo("Executing migration #$migrationId...<br/>");
+            $migrationQuery = "INSERT INTO `migrations` (`id`, `migration`) VALUES (NULL, '$migrationName')";
             // $migrationContent = fopen($migration, 'r');
             foreach($queries as $query)
             {
@@ -38,16 +39,19 @@
 
             }
 
-            $config['mysqlconn']->query($migrationQuery);
+            $executeMQ = $config['mysqlconn']->query($migrationQuery);
+            if ($executeMQ === false) {
+                throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+            }
             $end = round(microtime(true) - $start, 3);
-            echo("Execution completed (execution time $end ms)<br/><br/>");
+            echo("Execution completed (execution time: $end ms)<br/><br/>");
             return true;
         }
 
-        function checkMigration($migrationId)
+        function checkMigration($migrationName)
         {
             global $config;
-            $checkQuery = "SELECT COUNT(*) AS `exists` FROM `migrations` WHERE `migration` = $migrationId";
+            $checkQuery = "SELECT COUNT(*) AS `exists` FROM `migrations` WHERE `migration` = '$migrationName';";
             $query = $config['mysqlconn']->query($checkQuery);
             if ($query === false) {
                 throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
@@ -75,7 +79,7 @@
                 return true;
 
             $queries = array();
-            $queries[0] = "CREATE TABLE `migrations`( `id` int(20) NOT NULL, `migration` BIGINT(20) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
+            $queries[0] = "CREATE TABLE `migrations`( `id` int(20) NOT NULL, `migration` VARCHAR(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
             $queries[1] = "ALTER TABLE `migrations` ADD PRIMARY KEY (`id`);";
             $queries[2] = "ALTER TABLE `migrations` MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;";
             $queries[3] = "ALTER TABLE `migrations` ADD UNIQUE(`migration`);";
@@ -124,9 +128,9 @@
 
             $migrations = $this->migrations;
 
-            usort($migrations, function($a, $b) {
-                return filemtime($a) > filemtime($b);
-            });
+            // usort($migrations, function($a, $b) {
+            //     return filemtime($a) > filemtime($b);
+            // });
             $migrationCount = 0;
             foreach($migrations as $migration)
             {
