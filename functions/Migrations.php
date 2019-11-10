@@ -63,11 +63,15 @@
 
             $sql = 'SELECT COUNT(*) AS `exists` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "'.$config['mysqlname'].'" AND table_name = "migrations";';
 
-            // execute the statement
-            $query = $conn->query($sql);
+            $query = $config['mysqlconn']->query($sql);
             if ($query === false) {
-                throw new Exception($conn->error, $conn->errno);
+                throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
             }
+
+            $row = $query->fetch_object();
+            $dbExists = (bool) $row->exists;
+            if($dbExists)
+                return true;
 
             $queries = array();
             $queries[0] = "CREATE TABLE `migrations`( `id` int(20) NOT NULL, `migration` BIGINT(20) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
