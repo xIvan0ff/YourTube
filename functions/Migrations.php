@@ -61,6 +61,12 @@
         {
             global $config;
 
+            $check = "SELECT 1 FROM `migrations` LIMIT 1";
+            $sql = $config['mysqlconn']->query($check);
+            if ($sql === TRUE) {
+                return true;
+            }
+
             $queries = array();
             $queries[0] = "CREATE TABLE `migrations`( `id` int(20) NOT NULL, `migration` BIGINT(20) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
             $queries[1] = "ALTER TABLE `migrations` ADD PRIMARY KEY (`id`);";
@@ -69,12 +75,7 @@
 
             foreach($queries as $query)
             {
-                if($config['mysqlconn']->query($query) === TRUE)
-                {
-
-                } else {
-                    break;
-                }
+                $config['mysqlconn']->query($query);
             }
         }
 
@@ -102,7 +103,6 @@
             
             $this->count = count($migrations);
             $this->migrations = $migrations;
-            //return $migrations;
         }
 
         function getMigrationsCount()
