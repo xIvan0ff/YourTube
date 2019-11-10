@@ -10,6 +10,7 @@
 
         function __construct()
         {
+            $this->checkMigrationDB();
             $this->getMigrations();
             $this->getInsertedCount();
         }
@@ -120,7 +121,6 @@
         function checkMigrations()
         {
             global $config;
-            $this->checkMigrationDB();
 
             $migrations = $this->migrations;
 
