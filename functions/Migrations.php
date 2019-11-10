@@ -26,7 +26,7 @@
             if($isMigrated)
                 return false;
             echo("Executing migration #$migrationId<br/>");
-            $migrationQuery = "INSERT INTO `migrations` (`id`, `migration`) VALUES (NULL, $migrationId)";
+            $migrationQuery = "INSERT INTO `migrations` (`id`, `migration`) VALUES (NULL, '$migrationId')";
             // $migrationContent = fopen($migration, 'r');
             foreach($queries as $query)
             {
