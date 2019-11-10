@@ -61,10 +61,12 @@
         {
             global $config;
 
-            $check = "SELECT 1 FROM `migrations` LIMIT 1";
-            $sql = $config['mysqlconn']->query($check);
-            if ($sql === TRUE) {
-                return true;
+            $sql = 'SELECT COUNT(*) AS `exists` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "'.$config['mysqlname'].'" AND table_name = "migrations";';
+
+            // execute the statement
+            $query = $conn->query($sql);
+            if ($query === false) {
+                throw new Exception($conn->error, $conn->errno);
             }
 
             $queries = array();
