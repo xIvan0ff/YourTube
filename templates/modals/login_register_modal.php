@@ -16,7 +16,7 @@
             <label for="login_password">Password:</label>
             <input type="password" required class="form-control bg-dark border-dark" name="login_password" id="login_password" placeholder="Your password.">
           </div>
-          <button type="submit" class="btn btn-back">Sign in</button>
+          <button type="submit" class="btn btn-back sign-modal-btn">Sign In</button>
         </form>
         <p id="login-result"></p>
       </div>
@@ -50,7 +50,7 @@
               <label for="register_password">Password:</label>
               <input type="password" required class="form-control bg-dark border-dark" name="register_password" id="register_password" placeholder="A password you'll remember.">
             </div>
-            <button type="submit" class="btn btn-back">Sign up</button>
+            <button type="submit" class="btn btn-back sign-modal-btn">Sign Up</button>
           </form>
           <p id="register-result"></p>
       </div>

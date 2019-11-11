@@ -10,6 +10,8 @@ $("#login-form, #register-form").submit(function(e) {
     if(form.is("#register-form"))
         p = $('#register-result');
 
+
+    $(".sign-modal-btn").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
     $.ajax({
             type: "POST",
             url: url,
@@ -58,7 +60,11 @@ $("#login-form, #register-form").submit(function(e) {
                 p.addClass(color);
                 p.html(text);
                 if(reload)
-                    setTimeout(()=>{window.location.reload()}, 50);
+                {
+                    setTimeout(()=>{window.location.reload()}, 150);
+                } else {
+                    $(".sign-modal-btn").html('Try Again');
+                }
             }
         });
 });

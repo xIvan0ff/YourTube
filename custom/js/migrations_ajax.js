@@ -34,12 +34,13 @@ function updateMigrationsData()
         success: function(data)
         {
             let counts = data.split('|');
+            console.log(counts);
             if( $('#all-migrations').length && $('#ran-migrations').length)
             {
                 $('#all-migrations').attr('data-count', counts[0]);
                 $('#ran-migrations').attr('data-count', counts[1]);
-                $('#run-migrations').attr("disabled", !(counts[0]>counts[1] &&  $('#run-migrations').length));
-            } else if(counts[0]>counts[1] && !$('#database-form').length) {
+                $('#run-migrations').attr("disabled", !(parseInt(counts[0])>parseInt(counts[1]) &&  $('#run-migrations').length));
+            } else if(parseInt(counts[0])>parseInt(counts[1]) && !$('#database-form').length) {
                 location.href = maindir + "/admin#migrations";
             }
         }

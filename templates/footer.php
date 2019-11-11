@@ -4,9 +4,6 @@
             {include file="modals/login_register_modal.php"}
             <script src="{{$customdir}}/js/login_register_ajax.js"></script>
         {/if}
-        {if isset($account)}
-        <script src="{{$customdir}}/js/logout_ajax.js"></script>
-        {/if}
         {if (isset($account) && $account->isAdmin())}
         <script src="{{$customdir}}/js/migrations_ajax.js"></script>
         {/if}

@@ -151,12 +151,12 @@ p {
 }
 
 .nav-avatar:active, .nav-avatar:focus, .nav-avatar:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em var(--primary);
-    transform: translateY(-0.05em);
+    box-shadow: 0 0.5em 0.75em -0.3em var(--info);
+    transform: translateY(-0.15em);
 }
 
 .nav-avatar {
-    transition: 0.3s;
+    transition: 0.15s;
 }
 
 .modal-header, .modal-footer, .dropdown-divider {
@@ -207,12 +207,4 @@ pre {
 
 #avatar-upload {
     display: none;
-}
-
-.upload-button {
-    position: absolute;
-    top: 124px;
-    color:#666666;
-    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-    left: 291px;
 }
