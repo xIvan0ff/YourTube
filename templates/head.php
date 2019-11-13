@@ -14,7 +14,9 @@
         <link href="{{$customdir}}/css/style.css" rel="stylesheet" />
         <link href="{{$customdir}}/css/sidebar.css" rel="stylesheet" />
         {if $display_sidebar}
-            <link href="{{$customdir}}/css/sidebar_page.css" rel="stylesheet" />
+        <link href="{{$customdir}}/css/sidebar_page.css" rel="stylesheet" />
+        {else}
+        <link href="{{$customdir}}/css/sidebar_index.css" rel="stylesheet" />
         {/if}
         <script src="{{$customdir}}/js/sidebar.js"></script>
         <script>

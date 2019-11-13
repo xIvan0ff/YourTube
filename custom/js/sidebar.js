@@ -16,7 +16,8 @@ $(window).ready(function () {
     });
     $('#dismiss, .overlay').on('click', function () {
         $('#sidebar').toggleClass('active');
-        $('.overlay').removeClass('active');
+        $(this).removeClass('active');
+        $('#sidebarCollapse').removeClass('active');
     });
 });
 

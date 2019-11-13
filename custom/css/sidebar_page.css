@@ -1,8 +1,8 @@
 #sidebar {
     position: fixed;
+    left: 0px;
 }
 
 #sidebar.active {
-    transition: all 0.3s;
     left: -250px;
 }
