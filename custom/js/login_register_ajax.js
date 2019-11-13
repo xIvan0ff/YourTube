@@ -5,13 +5,22 @@ $("#login-form, #register-form").submit(function(e) {
     e.preventDefault();
     let form = $(this);
     let url = maindir + "/functions/user_functions.php";
+    let signBtn =  $(".sign-modal-btn");
+
+    signBtn.each(function(index) {
+        if ($(this).is('.show *')) {
+            signBtn = $(this);
+        }
+    });
+    
+
 
     let p = $('#login-result');
     if(form.is("#register-form"))
         p = $('#register-result');
 
 
-    $(".sign-modal-btn").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+    signBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
     $.ajax({
             type: "POST",
             url: url,
@@ -61,9 +70,9 @@ $("#login-form, #register-form").submit(function(e) {
                 p.html(text);
                 if(reload)
                 {
-                    setTimeout(()=>{window.location.reload()}, 150);
+                    setTimeout(()=>{window.location.reload()}, 175);
                 } else {
-                    $(".sign-modal-btn").html('Try Again');
+                    signBtn.html('Try again');
                 }
             }
         });

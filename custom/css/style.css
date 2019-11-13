@@ -155,8 +155,16 @@ p {
     transform: translateY(-0.15em);
 }
 
-.nav-avatar {
-    transition: 0.15s;
+.nav-avatar, .nav-avatar-img {
+    transition: 0.25s;
+}
+
+.nav-avatar:hover, .nav-avatar-img:hover {
+    transition: 0.5s;
+}
+
+.nav-avatar-img:active, .nav-avatar-img:focus, .nav-avatar-img:hover {
+    transform: rotate(360deg);
 }
 
 .modal-header, .modal-footer, .dropdown-divider {
