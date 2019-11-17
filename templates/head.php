@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 
         <!-- CUSTOM -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
         <link href="{{$customdir}}/css/style.css" rel="stylesheet" />
         <link href="{{$customdir}}/css/sidebar.css" rel="stylesheet" />
         {if $display_sidebar}

@@ -34,7 +34,6 @@ function updateMigrationsData()
         success: function(data)
         {
             let counts = data.split('|');
-            console.log(counts);
             if( $('#all-migrations').length && $('#ran-migrations').length)
             {
                 $('#all-migrations').attr('data-count', counts[0]);
