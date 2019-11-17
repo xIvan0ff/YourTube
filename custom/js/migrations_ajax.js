@@ -34,7 +34,7 @@ function updateMigrationsData()
         success: function(data)
         {
             let counts = data.split('|');
-            let unmigratedCheck = (parseInt(counts[0])>parseInt(counts[1]) &&  $('#run-migrations').length);
+            let unmigratedCheck = (parseInt(counts[0]) > parseInt(counts[1]) &&  $('#run-migrations').length);
             if( $('#all-migrations').length && $('#ran-migrations').length)
             {
                 $('#all-migrations').attr('data-count', counts[0]);
