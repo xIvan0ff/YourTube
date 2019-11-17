@@ -45,7 +45,16 @@ p {
 }
 
 #navbar {
-    max-height: 15vh;
+    height: 56px;
+    /* max-height: 15vh; */
+}
+
+#navbar-container .container-fluid {
+    padding: 0;
+}
+
+.navbar {
+    padding: 0 16px;
 }
 
 .navbar-brand {
@@ -157,6 +166,7 @@ p {
 
 .nav-avatar, .nav-avatar-img {
     transition: 0.25s;
+    transition-delay: 125ms;
 }
 
 .nav-avatar:hover, .nav-avatar-img:hover {
@@ -215,4 +225,26 @@ pre {
 
 #avatar-upload {
     display: none;
+}
+
+.page-link {
+    color: #8d8d8d;
+    background-color: rgb(47, 47, 47);
+    border: 1px solid rgb(52, 52, 52);
+}
+
+.page-link:hover {
+    color: #acabab;
+    background-color: rgb(45, 45, 45);
+    border: 1px solid rgb(60, 60, 60);
+}
+
+.page-item.active .page-link {
+    color: #dddddd;
+    background-color: rgb(65, 65, 65);
+    border: 1px solid rgb(70, 70, 70);
+}
+
+.page-item, .page-link {
+    transition: all 0.2s !important;
 }

@@ -1,5 +1,5 @@
                 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                    <div class="container-fluid justify-content-between{if $nav_center } justify-content-lg-center{/if}">   
+                    <div id="navbar-container" class="container-fluid justify-content-between{if $nav_center } justify-content-lg-center{/if}">   
                         <div>
                             <a role="button" id="sidebarCollapse" class="btn btn-main rounded-circle d-none mr-3{if $nav_center } d-md-none{else} d-md-inline-block{/if}">
                                 <i id="nav-icon" class="fas fa-bars"></i>

@@ -8,6 +8,7 @@
         <script src="{{$customdir}}/js/migrations_ajax.js"></script>
         {/if}
         <script src="{{$customdir}}/js/counter.js"></script>
+        {if $config.display_footer}
         <footer id="footer" class="footer footer-dark bg-dark fixed-bottom">
             <div class="container d-block d-md-none">
                 <div class="row justify-content-center text-center">
@@ -37,5 +38,6 @@
                 </div>
             </div>
         </footer>
+        {/if}
     </body>
 </html>

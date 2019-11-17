@@ -13,6 +13,9 @@
                         <li class="nav-item">
                         <a class="nav-link bg-transparent border-0" href="#config" role="tab" aria-controls="config" aria-selected="false">Config</a>
                         </li>
+                        <li class="nav-item">
+                        <a class="nav-link bg-transparent border-0" href="#logs" role="tab" aria-controls="logs" aria-selected="false">Logs</a>
+                        </li>
                     </ul>
                     </div>
                     <div class="card-body">
@@ -93,14 +96,56 @@
                                 </form>
                             </div>
                         </div>
-                        
                         <div class="tab-pane" id="config" role="tabpanel">
+                        </div>
+                        <div class="tab-pane" id="logs" role="tabpanel">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    {if $logs}
+                                    <div id="pagination-container"></div>
+                                    <div id="data-container"></div>
+                                    {else}
+                                    <p class="text-center">No logs available.</p>
+                                    {/if}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{$customdir}}/js/pagination.js"></script>
+    <script>
+    var arrayList = [];
+    let temp;
+    {foreach from=$logs item=log}
+        temp = `<div class="card bg-dark mb-2 shadow">
+            <div class="card-body">
+                <span class="log-text">{{$log.text}}</span>
+                <a class="float-right show-more" href="#">Show More</a>
+                <div class="card-info d-none border-top border-dark">
+                    <p class="m-0">Id: <small>{{$log.id}}</small>
+                    <span class="float-right">Type: <small>{{$log.type}}</small></span></p>
+                    <p class="m-0">Time: <small>{{$log.time|date_format:"%d.%m.%Y,  %H:%M (Server time)"}}</small>
+                    <span class="float-right">Log Type: <small>{{$log.logtype}}</small></span></p>
+                </div>
+            </div>
+        </div>`
+        arrayList.push(temp);
+    {/foreach}
+
+    $('#pagination-container').pagination({
+        dataSource: arrayList,
+        pageSize: 5,
+        showNavigator: true,
+        position: 'top',
+        callback: function(data, pagination) {
+            var html = data;
+            $('#data-container').html(html);
+        }
+    });
+    </script>
     <script src="{{$customdir}}/js/admin_options.js"></script>
 {else}
     <p class="not-logged">You're not logged in or not enough permissions. Redirecting</p>

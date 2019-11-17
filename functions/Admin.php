@@ -45,6 +45,26 @@ class Admin {
         return "$this->usersCount|$this->logsCount";
     }
 
+    function getLogs($order = 'ASC')
+    {
+        global $config;
+
+        $sql = "SELECT * FROM `site_logs` ORDER BY id $order;";
+
+        $query = $config['mysqlconn']->query($sql);
+        
+        if($query === false) {
+            throw new Exception($config['mysqlconn']->error, $config['mysqlconn']->errno);
+        }
+
+        while($row = $query->fetch_array())
+            $rows[] = $row;
+
+        if(isset($rows))
+            return $rows;
+        return false;
+    }
+
     function getUser($idOrUsername)
     {
         global $config;

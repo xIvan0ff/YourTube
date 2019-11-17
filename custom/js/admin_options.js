@@ -54,6 +54,16 @@ $(document).ready(()=>{
     });
 });
 
+$(document).ready(() => {
+    $('.show-more').text($('.show-more').hasClass('show-more') ? "Show More" : "Show Less");
+    $('body').on('click', '.show-more, .show-less', function() {
+        let info = $(this).next();
+        $(this).toggleClass('show-more show-less');
+        $(this).text($(this).hasClass('show-more') ? "Show More" : "Show Less");
+        info.toggleClass('d-none');
+    });
+});
+
 // VERSION COMPARE FUNCTION //
 
 

@@ -41,6 +41,16 @@
             header("Location: ".$config['maindir']);
           }
           break;
+
+          case 'admin':
+            $admin = new Admin();
+            $possibleLogs = array('DESC', 'ASC');
+            $logOrder = 'DESC';
+            if(isset($pages[1]) && in_array($pages[1], $possibleLogs))
+              $logOrder = $pages[1];
+            $logs = $admin->getLogs($logOrder);
+            $smarty->assign('logs', $logs);
+            break;
         }
         $_GET['p'] = $pages[0];
 
